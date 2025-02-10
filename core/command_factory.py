@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
@@ -25,11 +26,14 @@ from commands.find_package_command import FindPackage
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+>>>>>>> 272ca14 (uasim's branch)
 
 class CommandFactory:
     def __init__(self, data):
         self._app_data = data
 
+<<<<<<< HEAD
     def create(self, cmd_name):
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -77,3 +81,26 @@ class CommandFactory:
         
         raise ValueError('Invalid command name')
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+    # def create(self, cmd_name):
+    #     if cmd_name.upper() == 'LOGIN':
+    #         return LoginCommand(self._app_data)
+    #     if cmd_name.upper() == 'LOGOUT':
+    #         return LogoutCommand(self._app_data)
+    #     if cmd_name.upper() == 'SHOWUSERS':
+    #         return ShowUsersCommand(self._app_data)
+    #     if cmd_name.upper() == 'ADDCOMMENT':
+    #         return AddCommentCommand(self._app_data)
+    #     if cmd_name.upper() == 'ADDVEHICLE':
+    #         return AddVehicleCommand(self._app_data)
+    #     if cmd_name.upper() == 'REGISTERUSER':
+    #         return RegisterUserCommand(self._app_data)
+    #     if cmd_name.upper() == 'SHOWVEHICLES':
+    #         return ShowVehiclesCommand(self._app_data)
+    #     if cmd_name.upper() == 'REMOVECOMMENT':
+    #         return RemoveCommentCommand(self._app_data)
+    #     if cmd_name.upper() == 'REMOVEVEHICLE':
+    #         return RemoveVehicleCommand(self._app_data)
+
+        raise ValueError('Invalid command name')
+>>>>>>> 272ca14 (uasim's branch)

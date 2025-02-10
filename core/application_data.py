@@ -1,17 +1,22 @@
-from models.truck import Truck
-from models.employee import Employee
+
 from models.package import Package
 from models.route import Route
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 from models.locations import Locations
 from datetime import datetime
 class Application_data:
     
+=======
+from models.truck import Truck
+class ApplicationData:
+>>>>>>> 272ca14 (uasim's branch)
     def __init__(self):
-        self._employees: list[Employee] = []
-        self._packages: list[Package] = []
+        
+        self._packages:list[Package] = []
         self._routes: list[Route] = []
+<<<<<<< HEAD
         self._trucks: list[Truck] = []
         self._adding_trucks()
 =======
@@ -41,18 +46,23 @@ class Application_data:
     def employees(self):
         return tuple(self._employees)
     
+=======
+        self._trucks:list[Truck] = []
+        
+>>>>>>> 272ca14 (uasim's branch)
     @property
     def packages(self):
-        return tuple(self._packages)
+        return self._packages
     
     @property
     def routes(self):
-        return tuple(self._routes)
+        return self._routes
     
     @property
     def trucks(self):
-        return tuple(self._trucks)
+        return self._trucks
     
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -241,5 +251,77 @@ class Application_data:
             
         for truck_id in range(1026,1041):
             self._trucks.append(Truck(truck_id,"Actros", 26000, 13000))
+=======
+    def add_package(self,package):
+        self.packages.append(package)
+>>>>>>> 272ca14 (uasim's branch)
         
+    def add_route(self,route):
+        self.routes.append(route)
+        
+    def add_truck(self,truck):
+        self.trucks.append(truck)
+        
+    def get_package(self,pack_id):
+        for package in self.packages:
+            if package.package_id == pack_id:
+                return package
+        raise ValueError("Package does not exist!")
     
+    def get_route(self,id_route):
+        for route in self.routes:
+            if route.route_id == id_route:
+                return route
+        raise ValueError("Route does not exist!")
+    
+    def get_truck(self,id_truck):
+        for truck in self.trucks:
+            if truck.truck_id == id_truck:
+                return truck
+        raise ValueError("Truck does not exist!")
+    
+    
+        
+
+
+    # def __init__(self):
+    #     self._users = []
+    #     self._logged_user = None
+
+    # @property
+    # def users(self):
+    #     return tuple(self._users)
+
+    # def create_user(self, username, firstname, lastname, password, user_role) -> User:
+    #     if len([u for u in self._users if u.username == username]) > 0:
+    #         raise ValueError(
+    #             f'User {username} already exist. Choose a different username!')
+
+    #     user = User(username, firstname, lastname, password, user_role)
+    #     self._users.append(user)
+
+    #     return user
+
+    # def find_user_by_username(self, username: str) -> User:
+    #     filtered = [user for user in self._users if user.username == username]
+    #     if filtered == []:
+    #         raise ValueError(f'There is no user with username {username}!')
+
+    #     return filtered[0]
+
+    # @property
+    # def logged_in_user(self):
+    #     if self.has_logged_in_user:
+    #         return self._logged_user
+    #     else:
+    #         raise ValueError('There is no logged in user.')
+
+    # @property
+    # def has_logged_in_user(self):
+    #     return self._logged_user is not None
+
+    # def login(self, user: User):
+    #     self._logged_user = user
+
+    # def logout(self):
+    #     self._logged_user = None

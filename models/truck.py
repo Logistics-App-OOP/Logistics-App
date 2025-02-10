@@ -1,4 +1,5 @@
 class Truck:
+<<<<<<< HEAD
     def __init__(self, truck_id,brand,capacity,max_range):
         self._truck_id = truck_id
         self._brand = brand
@@ -63,3 +64,7 @@ class Truck:
         return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
     
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+    truck_id = 1
+    pass
+>>>>>>> 272ca14 (uasim's branch)
