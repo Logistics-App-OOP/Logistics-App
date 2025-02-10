@@ -1,3 +1,4 @@
+
 class Cities:
     MELBOURNE = 'Melbourne'
     ALICE_SPRINGS = 'Alice Springs'
@@ -6,7 +7,7 @@ class Cities:
     SYDNEY = 'Sydney'
     BRISBANE = 'Brisbane'
     DARWIN = 'Darwin'
- 
+
     @classmethod
     def city_validator(cls, value):
         if value not in [Cities.MELBOURNE, Cities.ADELAIDE, Cities.ALICE_SPRINGS,

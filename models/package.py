@@ -9,7 +9,7 @@ class Package:
         self._start_location = Cities.city_validator(start_location)
         self._end_location = Cities.city_validator(end_location)
         if weight <= 0:
-            raise ValueError("Weight cannot be negative.")
+            raise ValueError("Weight must be at least 1 kg.")
         self._weight = weight
         if not customer_name:
             raise ValueError("Customer name cannot be empty.")
@@ -51,8 +51,5 @@ class Package:
                 f"Weight: {self.weight}kg.\n"
                 f"Customer: {self.customer_name} ({self.customer_phone})")
 
-pack1 = Package("Sydney", "Melbourne", 45, "Uasim", "0876417576")
-print(str(pack1))
-        
-        
+
         
