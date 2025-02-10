@@ -3,13 +3,12 @@ from package_status import PackageStatus
 
 class Package:
     package_id = 1
-    available_cities = ("Sydney","Melbourne","Adelaide","Alice Springs","Brisbane","Darwin","Perth")
     def __init__(self,start_location,end_location,weight,customer_name,customer_phone):
         self._id = Package.package_id
         Package.package_id += 1
         self._start_location = Cities.city_validator(start_location)
         self._end_location = Cities.city_validator(end_location)
-        if weight < 0:
+        if weight <= 0:
             raise ValueError("Weight cannot be negative.")
         self._weight = weight
         if not customer_name:
