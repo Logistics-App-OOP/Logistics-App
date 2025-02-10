@@ -14,9 +14,9 @@ class Package:
         if not customer_name:
             raise ValueError("Customer name cannot be empty.")
         self._customer_name = customer_name
-        if not customer_phone:
-            raise ValueError("Customer phone cannot be empty.")
-        self._customer_phone = str(customer_phone)
+        if not customer_phone.isdigit():
+            raise ValueError("Customer phone must contain only digits.")
+        self._customer_phone = customer_phone
         self._status = PackageStatus.RECEIVED
         
     @property
@@ -43,6 +43,10 @@ class Package:
     def customer_phone(self):
         return self._customer_phone
     
+    @property
+    def status(self):
+        return self._status
+    
     def update_status(self):
         self._status = PackageStatus.next(self._status)   
     
@@ -50,6 +54,7 @@ class Package:
         return (f"Package {self.id}: {self.start_location} to {self.end_location}\n"
                 f"Weight: {self.weight}kg.\n"
                 f"Customer: {self.customer_name} ({self.customer_phone})")
+        
 
 
         
