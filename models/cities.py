@@ -10,7 +10,7 @@ class Cities:
 
     @classmethod
     def city_validator(cls, value):
-        if value not in [Cities.MELBOURNE, Cities.ADELAIDE, Cities.ALICE_SPRINGS,
+        if value.capitalize() not in [Cities.MELBOURNE, Cities.ADELAIDE, Cities.ALICE_SPRINGS,
                          Cities.PERTH, Cities.SYDNEY, Cities.BRISBANE, Cities.DARWIN]:
             raise ValueError('Invalid city.')
         return value
