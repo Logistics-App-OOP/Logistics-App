@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
@@ -29,8 +30,11 @@ from commands.find_package_command import FindPackage
 =======
 >>>>>>> 272ca14 (uasim's branch)
 
+=======
+from core.application_data import ApplicationData
+>>>>>>> e431c9e (update branch)
 class CommandFactory:
-    def __init__(self, data):
+    def __init__(self, data: ApplicationData):
         self._app_data = data
 
 <<<<<<< HEAD

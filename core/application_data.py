@@ -17,6 +17,7 @@ class ApplicationData:
         self._packages:list[Package] = []
         self._routes: list[Route] = []
 <<<<<<< HEAD
+<<<<<<< HEAD
         self._trucks: list[Truck] = []
         self._adding_trucks()
 =======
@@ -48,6 +49,52 @@ class Application_data:
     
 =======
         self._trucks:list[Truck] = []
+=======
+        self._trucks:list[Truck] = [
+            Truck(1001, "Scania", 42000, 8000),
+            Truck(1002, "Scania", 42000, 8000),
+            Truck(1003, "Scania", 42000, 8000),
+            Truck(1004, "Scania", 42000, 8000),
+            Truck(1005, "Scania", 42000, 8000),
+            Truck(1006, "Scania", 42000, 8000),
+            Truck(1007, "Scania", 42000, 8000),
+            Truck(1008, "Scania", 42000, 8000),
+            Truck(1009, "Scania", 42000, 8000),
+            Truck(1010, "Scania", 42000, 8000),
+
+            Truck(1011, "Man", 37000, 10000),
+            Truck(1012, "Man", 37000, 10000),
+            Truck(1013, "Man", 37000, 10000),
+            Truck(1014, "Man", 37000, 10000),
+            Truck(1015, "Man", 37000, 10000),
+            Truck(1016, "Man", 37000, 10000),
+            Truck(1017, "Man", 37000, 10000),
+            Truck(1018, "Man", 37000, 10000),
+            Truck(1019, "Man", 37000, 10000),
+            Truck(1020, "Man", 37000, 10000),
+            Truck(1021, "Man", 37000, 10000),
+            Truck(1022, "Man", 37000, 10000),
+            Truck(1023, "Man", 37000, 10000),
+            Truck(1024, "Man", 37000, 10000),
+            Truck(1025, "Man", 37000, 10000),
+
+            Truck(1026, "Actros", 26000, 13000),
+            Truck(1027, "Actros", 26000, 13000),
+            Truck(1028, "Actros", 26000, 13000),
+            Truck(1029, "Actros", 26000, 13000),
+            Truck(1030, "Actros", 26000, 13000),
+            Truck(1031, "Actros", 26000, 13000),
+            Truck(1032, "Actros", 26000, 13000),
+            Truck(1033, "Actros", 26000, 13000),
+            Truck(1034, "Actros", 26000, 13000),
+            Truck(1035, "Actros", 26000, 13000),
+            Truck(1036, "Actros", 26000, 13000),
+            Truck(1037, "Actros", 26000, 13000),
+            Truck(1038, "Actros", 26000, 13000),
+            Truck(1039, "Actros", 26000, 13000),
+            Truck(1040, "Actros", 26000, 13000)]
+        
+>>>>>>> e431c9e (update branch)
         
 >>>>>>> 272ca14 (uasim's branch)
     @property

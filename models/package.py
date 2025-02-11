@@ -1,3 +1,23 @@
+from models.constants.cities import Cities
+from models.constants.package_status import PackageStatus
+
+class Package:
+    package_id = 1
+    def __init__(self,start_location,end_location,weight,customer_name,customer_phone):
+        self._id = Package.package_id
+        Package.package_id += 1
+        self._start_location = Cities.city_validator(start_location)
+        self._end_location = Cities.city_validator(end_location)
+        if weight <= 0:
+            raise ValueError("Weight must be at least 1 kg.")
+        self._weight = weight
+        if not customer_name:
+            raise ValueError("Customer name cannot be empty.")
+        self._customer_name = customer_name
+        if not customer_phone.isdigit():
+            raise ValueError("Customer phone must contain only digits.")
+        self._customer_phone = customer_phone
+        self._status = PackageStatus.RECEIVED
 # from models.locations import Locations
 # class Package:
 #     package_id = 1

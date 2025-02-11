@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from commands.base_command import BaseCommand
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -50,4 +51,10 @@ class CreatePackage(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 5
+<<<<<<< HEAD
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+=======
+from commands.validate_params import validate_params_count
+>>>>>>> 6cabb68 (update branch)
+>>>>>>> e431c9e (update branch)
