@@ -1,5 +1,5 @@
-from cities import Cities
-from package_status import PackageStatus
+from models.constants.cities import Cities
+from models.constants.package_status import PackageStatus
 
 class Package:
     package_id = 1
