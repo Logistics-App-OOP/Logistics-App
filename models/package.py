@@ -1,9 +1,11 @@
 from cities import Cities
+from models.customer import Customer
 from package_status import PackageStatus
 
 class Package:
     package_id = 1
-    def __init__(self,start_location,end_location,weight,customer_name,customer_phone):
+
+    def __init__(self,start_location,end_location,weight, customer_name, customer_phone):
         self._id = Package.package_id
         Package.package_id += 1
         self._start_location = Cities.city_validator(start_location)
@@ -11,14 +13,11 @@ class Package:
         if weight <= 0:
             raise ValueError("Weight must be at least 1 kg.")
         self._weight = weight
-        if not customer_name:
-            raise ValueError("Customer name cannot be empty.")
-        self._customer_name = customer_name
-        if not customer_phone:
-            raise ValueError("Customer phone cannot be empty.")
-        self._customer_phone = str(customer_phone)
+        self._customer_name = Customer.name
+        self._customer_phone = Customer.number
         self._status = PackageStatus.RECEIVED
-        
+
+
     @property
     def id(self):
         return self._id
@@ -51,5 +50,3 @@ class Package:
                 f"Weight: {self.weight}kg.\n"
                 f"Customer: {self.customer_name} ({self.customer_phone})")
 
-
-        
