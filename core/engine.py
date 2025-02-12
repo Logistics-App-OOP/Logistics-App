@@ -22,3 +22,4 @@ class Engine:
         cmd_name, *params = input_line.split()
 
         return self._command_factory.create(cmd_name).execute(params)
+

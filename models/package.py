@@ -1,6 +1,7 @@
 from cities import Cities
 from models.customer import Customer
 from package_status import PackageStatus
+from datetime import *
 
 class Package:
     package_id = 1
@@ -15,7 +16,16 @@ class Package:
         self._weight = weight
         self._customer_info = Customer(customer_name,customer_surname, customer_phone)
         self._status = PackageStatus.RECEIVED
+        self._date = datetime.today()
+        self._created_time = datetime.now()
 
+    @property
+    def date(self):
+        return self._date
+    @property
+    def time_info(self):
+
+        return self._created_time.strftime("%Y-%m-%d %H:%M")
 
     @property
     def id(self):
@@ -38,14 +48,14 @@ class Package:
 
         return str(Customer)
 
-
     def update_status(self):
         self._status = PackageStatus.next(self._status)
 
     def __str__(self):
         return (f"Package ID:({self.id}), From {self.start_location} to {self.end_location}.\n"
                 f"Weight: {self.weight}kg.\n"
-                f"{self._customer_info}")
+                f"{self._customer_info}\n"
+                f"Received on: {self.time_info}")
 
 
 
