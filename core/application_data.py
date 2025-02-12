@@ -27,8 +27,8 @@ class ApplicationData:
         self._packages.append(package)
         return package
     
-    def create_route(self, start_loc, *next_loc):
-        route = Route(start_loc, *next_loc)
+    def create_route(self, departure_time, start_loc, *next_loc):
+        route = Route(departure_time, start_loc, *next_loc)
         self._routes.append(route)
         return route
 

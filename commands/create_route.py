@@ -1,5 +1,6 @@
 from commands.base_command import BaseCommand
 from core.application_data import ApplicationData
+from datetime import datetime, timedelta
 
 class CreateRoute(BaseCommand):
     def __init__(self, app_data: ApplicationData):
@@ -8,10 +9,16 @@ class CreateRoute(BaseCommand):
     def execute(self, params):
         super().execute(params)
 
-        start_loc, *next_loc = params
+        departure_date_str, start_loc, *next_loc = params
 
-        route = self._app_data.create_route(
-            start_loc, *next_loc)
+        try:
+            departure_date = datetime.strptime(departure_date_str, "%Y-%m-%d")
+        except ValueError:
+            return "Invalid departure date format. Please use 'YYYY-MM-DD' format."
+
+        departure_time = datetime.combine(departure_date, datetime.min.time()) + timedelta(hours=6)
+
+        route = self._app_data.create_route(departure_time, start_loc, *next_loc)
 
         return f'Route {str(route)} created successfully!'
 
