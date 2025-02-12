@@ -1,60 +1,43 @@
-from models.constants.cities import Cities
-from models.constants.package_status import PackageStatus
+from models.locations import Locations
+
 
 class Package:
-    package_id = 1
-    def __init__(self,start_location,end_location,weight,customer_name,customer_phone):
-        self._id = Package.package_id
-        Package.package_id += 1
-        self._start_location = Cities.city_validator(start_location)
-        self._end_location = Cities.city_validator(end_location)
-        if weight <= 0:
-            raise ValueError("Weight must be at least 1 kg.")
-        self._weight = weight
-        if not customer_name:
-            raise ValueError("Customer name cannot be empty.")
-        self._customer_name = customer_name
-        if not customer_phone.isdigit():
-            raise ValueError("Customer phone must contain only digits.")
-        self._customer_phone = customer_phone
-        self._status = PackageStatus.RECEIVED
-        
-    @property
-    def id(self):
-        return self._id
+
+    ID = 1
+
+    def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
+        self.customer_name = customer_name
+        self.customer_phone = Package.validate_phone(customer_phone)
+        self._start_loc = Locations(start_loc)
+        self._end_loc = Locations(end_loc)
+        self.weight = Package.validate_weight(weight)
+        self.id = self.id_counter()
+    
+    @classmethod
+    def id_counter(cls):
+        cls.ID += 1
+        return cls.ID
     
     @property
-    def start_location(self):
-        return self._start_location
-
-    @property
-    def end_location(self):
-        return self._end_location
-
-    @property
-    def weight(self):
-        return self._weight
-
-    @property
-    def customer_name(self):
-        return self._customer_name
-
-    @property
-    def customer_phone(self):
-        return self._customer_phone
+    def start_loc(self):
+        return self._start_loc
     
     @property
-    def status(self):
-        return self._status
-    
-    def update_status(self):
-        self._status = PackageStatus.next(self._status)   
-    
-    def __str__(self):
-        return (f"Package {self.id}: {self.start_location} to {self.end_location}\n"
-                f"Weight: {self.weight}kg.\n"
-                f"Customer: {self.customer_name} ({self.customer_phone})")
-        
+    def end_loc(self):
+        return self._end_loc
 
-
-        
+    @staticmethod
+    def validate_phone(phone):
+        if not phone.isdigit():
+            raise ValueError("Phone number must contain only digits!")
+        if len(phone) != 10:  
+            raise ValueError("Phone number must be exactly 10 digits long!")
+        if not (phone.startswith("04") or phone.startswith(("02", "03", "07", "08"))):
+            raise ValueError("Phone number must start with 04 (mobile) or a valid area code (02, 03, 07, 08)!")
+        return phone
+    
+    @staticmethod
+    def validate_weight(weight):
+        if int(weight) <= 0:
+            raise ValueError("The weight of a package can't be a negative number.")
+        return weight
