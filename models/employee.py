@@ -19,16 +19,27 @@ class Employee:
     FIRSTNAME_LEN_MAX = 20
     FIRSTNAME_LEN_ERR = f'Firstname must be between {FIRSTNAME_LEN_MIN} and {FIRSTNAME_LEN_MAX} characters long!'
 
+<<<<<<< HEAD
+=======
+    NOT_SUPERVISOR_ERROR = "Only supervisors are granted access."
+    NOT_MANAGER_ERROR = "Only managers are granted access."
+
+
+>>>>>>> b395aa0 (Updated main based on Emil's branch)
     def __init__(self, username, firstname, lastname, password, role):
         self.username = username
         self.password = password
         self.lastname = lastname
         self.firstname = firstname
+<<<<<<< HEAD
         self._role = EmployeeRole.from_string(role)
         
     @property
     def role(self):
         return self._role
+=======
+        self.role = role
+>>>>>>> b395aa0 (Updated main based on Emil's branch)
     
     @property
     def username(self):

@@ -1,7 +1,8 @@
-from models.constants.cities import Cities
-from models.constants.package_status import PackageStatus
+from models.locations import Locations
+
 
 class Package:
+<<<<<<< HEAD
     package_id = 1
     def __init__(self,start_location,end_location,weight,customer_name,customer_phone):
         self._id = Package.package_id
@@ -93,4 +94,48 @@ class Package:
 
 
         
+<<<<<<< HEAD
 >>>>>>> 272ca14 (uasim's branch)
+=======
+=======
+
+    ID = 1
+
+    def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
+        self.customer_name = customer_name
+        self.customer_phone = Package.validate_phone(customer_phone)
+        self._start_loc = Locations(start_loc)
+        self._end_loc = Locations(end_loc)
+        self.weight = Package.validate_weight(weight)
+        self.id = self.id_counter()
+    
+    @classmethod
+    def id_counter(cls):
+        cls.ID += 1
+        return cls.ID
+    
+    @property
+    def start_loc(self):
+        return self._start_loc
+    
+    @property
+    def end_loc(self):
+        return self._end_loc
+
+    @staticmethod
+    def validate_phone(phone):
+        if not phone.isdigit():
+            raise ValueError("Phone number must contain only digits!")
+        if len(phone) != 10:  
+            raise ValueError("Phone number must be exactly 10 digits long!")
+        if not (phone.startswith("04") or phone.startswith(("02", "03", "07", "08"))):
+            raise ValueError("Phone number must start with 04 (mobile) or a valid area code (02, 03, 07, 08)!")
+        return phone
+    
+    @staticmethod
+    def validate_weight(weight):
+        if int(weight) <= 0:
+            raise ValueError("The weight of a package can't be a negative number.")
+        return weight
+>>>>>>> b395aa0 (Updated main based on Emil's branch)
+>>>>>>> 24a6a4e (Updated main based on Emil's branch)
