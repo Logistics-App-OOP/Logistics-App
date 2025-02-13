@@ -29,3 +29,9 @@ class RegisterEmployeeCommand(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 4
+    
+    def _requires_manager(self) -> bool:
+        return False
+    
+    def _requires_supervisor(self) -> bool:
+        return False

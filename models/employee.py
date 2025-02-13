@@ -74,17 +74,5 @@ class Employee:
             raise ValueError(Employee.LASTNAME_LEN_ERR)
         self._lastname = value
     
-    @property
-    def is_manager(self):
-        if self.role == EmployeeRole.MANAGER:
-            return True
-        return False
-    
-    @property
-    def is_supervisor(self):
-        if self.role == EmployeeRole.SUPERVISOR:
-            return True
-        return False
-    
     def __str__(self):
         return f'Username: {self.username}, FullName: {self.firstname} {self.lastname}, Role: {self.role}'

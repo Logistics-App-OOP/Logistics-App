@@ -12,11 +12,20 @@ class BaseCommand:
         if len(params) < self._expected_params_count():
             raise ValueError(
                 f'Invalid number of arguments. Expected at least {self._expected_params_count()}; received: {len(params)}.')
+        
+        if self._requires_supervisor() and not self._app_data.is_supervisor():
+            raise ValueError("Only the supervisor has access to this information.")
 
         return ''
+    
+    def _requires_manager(self) -> bool:
+        return False
+    
+    def _requires_supervisor(self) -> bool:
+        return False
 
     def _requires_login(self) -> bool:
-        raise NotImplementedError('Override in derived class')
+        return False
 
     def _expected_params_count(self) -> int:
         raise NotImplementedError('Override in derived class')

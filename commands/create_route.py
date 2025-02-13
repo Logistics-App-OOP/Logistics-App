@@ -23,7 +23,13 @@ class CreateRoute(BaseCommand):
         return f'Route {str(route)} created successfully! Route ID: {route.id}'
 
     def _requires_login(self) -> bool:
-        return False
+        return True
 
     def _expected_params_count(self) -> int:
         return 3
+    
+    def _requires_manager(self) -> bool:
+        return False
+    
+    def _requires_supervisor(self) -> bool:
+        return False

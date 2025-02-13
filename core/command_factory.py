@@ -4,6 +4,7 @@ from commands.register_employee_command import RegisterEmployeeCommand
 from commands.create_package import CreatePackage
 from commands.create_route import CreateRoute
 from commands.search_route import SearchRoute
+from commands.view_package_info import ViewPackageInfo
 
 class CommandFactory:
     def __init__(self, data):
@@ -22,5 +23,7 @@ class CommandFactory:
             return CreateRoute(self._app_data)
         if cmd_name.upper() == 'SEARCHROUTE':
             return SearchRoute(self._app_data)
+        if cmd_name.upper() == 'VIEWPACKAGEINFO':
+            return ViewPackageInfo(self._app_data)
         
         raise ValueError('Invalid command name')

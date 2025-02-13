@@ -1,4 +1,5 @@
 from models.employee import Employee
+from models.employee_role import EmployeeRole
 from models.package import Package
 from models.route import Route
 from models.truck_car_park import TruckCarPark
@@ -13,6 +14,18 @@ class ApplicationData:
     @property
     def employees(self):
         return tuple(self._employees)
+    
+    def is_manager(self):
+        return (
+        self._logged_employee is not None
+        and self._logged_employee.role == EmployeeRole.MANAGER
+    )
+    
+    def is_supervisor(self):
+        return (
+        self._logged_employee is not None
+        and self._logged_employee.role == EmployeeRole.SUPERVISOR
+    )
     
     @property
     def routes(self):
@@ -33,6 +46,13 @@ class ApplicationData:
     #             raise ValueError(f"Package with ID #{package_id} does not exist.")
     #     if truck_id not in TruckCarPark.list_all_free_trucks():
     #         raise ValueError(f'Truck with ID #{truck_id} is not available.')
+
+    def view_package_info(self):
+        if self._packages == []:
+            raise ValueError("No registered packages found.")
+        infos = [str(package) for package in self._packages]
+        return '\n'.join(infos)
+        
     
     def create_route(self, departure_time, start_loc, *next_loc):
         route = Route(departure_time, start_loc, *next_loc)

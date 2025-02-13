@@ -4,6 +4,7 @@ from models.locations import Locations
 class Package:
 
     ID = 0
+    STATUS = ['Received', 'On-Route', 'Delivered']
 
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
         self.customer_name = customer_name
@@ -12,6 +13,7 @@ class Package:
         self._end_loc = Locations(end_loc)
         self.weight = Package.validate_weight(weight)
         self.id = self.id_counter()
+        self.status = Package.STATUS[0]
     
     @classmethod
     def id_counter(cls):
@@ -41,3 +43,7 @@ class Package:
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
         return weight
+    
+    def __str__(self):
+        if self.status == 'Received':
+            return f'Package: #{self.id}, Location: {self._start_loc.value}, Status: {self.status}'
