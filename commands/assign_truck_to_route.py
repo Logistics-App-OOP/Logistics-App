@@ -1,14 +1,20 @@
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
+<<<<<<< HEAD
 from models.route import Route
 
 class AssignTruckToRoute(BaseCommand):
+=======
+
+class CreatePackage(BaseCommand):
+>>>>>>> 9b3c1fa (created find routes and create routes)
     def __init__(self, app_data: Application_data):
         self._app_data = app_data
         
     def execute(self, params):
         super().execute(params)
         
+<<<<<<< HEAD
         if len(params) != 1:
             raise ValueError("Invalid input! Expected input: route id.")
         
@@ -35,3 +41,19 @@ class AssignTruckToRoute(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 1
+=======
+        #params
+        
+        
+        
+        
+        
+        
+        
+        
+    # def _requires_login(self) -> bool:
+    #     return True
+
+    # def _expected_params_count(self) -> int:
+    #     return 5
+>>>>>>> 9b3c1fa (created find routes and create routes)

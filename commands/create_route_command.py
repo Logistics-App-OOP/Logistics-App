@@ -1,8 +1,11 @@
 from datetime import datetime
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from re import A
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+>>>>>>> 9b3c1fa (created find routes and create routes)
 from models.route import Route
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
@@ -34,6 +37,7 @@ class CreateRouteCommand(BaseCommand):
 
         route = self._app_data.create_route(departure_time, start_loc, *next_locations)
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         return str(route)
 =======
@@ -41,6 +45,10 @@ class CreateRouteCommand(BaseCommand):
         full_route = " -> ".join(route.locations)  
         return f"Route {route.id} created successfully: {full_route} with departure at {route.departure_time.strftime('%b %d %H:%M')}!"
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+        
+        return str(route)
+>>>>>>> 9b3c1fa (created find routes and create routes)
     
     def _requires_login(self) -> bool:
         return True

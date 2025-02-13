@@ -17,6 +17,7 @@ engine = Engine(cmd_factory)
 
 engine.start()
 
+<<<<<<< HEAD
 
 
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
@@ -56,6 +57,9 @@ engine.start()
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 =======
 
+=======
+<<<<<<< HEAD
+>>>>>>> 9b3c1fa (created find routes and create routes)
 # createroute 2025-02-11T14:30 Sydney Melbourne Perth
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 <<<<<<< HEAD
@@ -84,4 +88,15 @@ engine.start()
 # createroute 2025-02-11T14:30 Sydney Melbourne Perth
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 >>>>>>> 7706c1c (Created CreateRoute)
+<<<<<<< HEAD
 >>>>>>> 4b32701 (Created CreateRoute)
+=======
+=======
+# createroute 2025-02-11T14:30 Sydney Perth 
+# createroute 2025-02-11T14:30 Sydney Melbourne
+# createroute 2025-02-11T14:30 Adelaide Melbourne
+# createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
+# registeremployee Uasim1702 Uasim Halak 123456789 Manager
+# login Uasim1702 123456789
+>>>>>>> ebba556 (created find routes and create routes)
+>>>>>>> 9b3c1fa (created find routes and create routes)

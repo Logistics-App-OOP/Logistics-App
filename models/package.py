@@ -134,7 +134,6 @@ class Package:
         elif self.status == "In Transit":
             self.status = "Delivered"
 
-    @staticmethod
     def validate_phone(phone):
         if not phone.isdigit():
             raise ValueError("Phone number must contain only digits!")
@@ -144,7 +143,6 @@ class Package:
             raise ValueError("Phone number must start with 04 (mobile) or a valid area code (02, 03, 07, 08)!")
         return phone
     
-    @staticmethod
     def validate_weight(weight):
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
