@@ -2,8 +2,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 4b32701 (Created CreateRoute)
 from core.application_data import Application_data
 from core.command_factory import CommandFactory
 from core.engine import Engine
@@ -60,13 +63,25 @@ engine.start()
 =======
 =======
 from core.application_data import ApplicationData
+=======
+from core.application_data import Application_data
+>>>>>>> 7706c1c (Created CreateRoute)
 from core.command_factory import CommandFactory
 from core.engine import Engine
 
-app_data = ApplicationData()
+app_data = Application_data()
 cmd_factory = CommandFactory(app_data)
 engine = Engine(cmd_factory)
 
 engine.start()
+<<<<<<< HEAD
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+=======
+
+# createroute 2025-02-11T14:30 Sydney Melbourne Perth
+# registeremployee Uasim1702 Uasim Halak 123456789 Manager
+>>>>>>> 7706c1c (Created CreateRoute)
+>>>>>>> 4b32701 (Created CreateRoute)

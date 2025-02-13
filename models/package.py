@@ -41,6 +41,7 @@ class Package:
 #     def id(self):
 #         return self._id
     
+<<<<<<< HEAD
 #     @property
 #     def start_loc(self):
 #         return self._start_loc
@@ -102,6 +103,9 @@ class Package:
     
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
     ID = 1
+=======
+    ID = 0
+>>>>>>> 7706c1c (Created CreateRoute)
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
         self.customer_name = customer_name
         self.customer_phone = Package.validate_phone(customer_phone)
@@ -146,15 +150,27 @@ class Package:
             raise ValueError("The weight of a package can't be a negative number.")
         return weight
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b395aa0 (Updated main based on Emil's branch)
 <<<<<<< HEAD
 >>>>>>> 24a6a4e (Updated main based on Emil's branch)
 =======
 =======
+=======
+>>>>>>> 7706c1c (Created CreateRoute)
 <<<<<<< HEAD
 =======
     
     
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+=======
+=======
+    
+>>>>>>> 4c07a03 (Created CreateRoute)
+>>>>>>> 7706c1c (Created CreateRoute)
+>>>>>>> 4b32701 (Created CreateRoute)

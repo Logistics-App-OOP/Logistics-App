@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
@@ -34,6 +35,8 @@ from commands.find_package_command import FindPackage
 =======
 =======
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 4b32701 (Created CreateRoute)
 from core.application_data import ApplicationData
 >>>>>>> e431c9e (update branch)
 class CommandFactory:
@@ -119,22 +122,29 @@ class CommandFactory:
 # from commands.register_employee_command import RegisterEmployeeCommand
 # from commands.create_package import CreatePackage
 # from commands.create_route import CreateRoute
+=======
+from commands.login_command import LoginCommand
+from commands.logout_command import LogoutCommand
+from commands.register_employee_command import RegisterEmployeeCommand
+from commands.create_package_command import CreatePackage
+from commands.create_route_command import CreateRouteCommand
+>>>>>>> 4c07a03 (Created CreateRoute)
 
 class CommandFactory:
     def __init__(self, data):
         self._app_data = data
 
     def create(self, cmd_name):
-        # if cmd_name.upper() == 'LOGIN':
-        #     return LoginCommand(self._app_data)
-        # if cmd_name.upper() == 'LOGOUT':
-        #     return LogoutCommand(self._app_data)
-        # if cmd_name.upper() == 'REGISTEREMPLOYEE':
-        #     return RegisterEmployeeCommand(self._app_data)
-        # if cmd_name.upper() == 'CREATEPACKAGE':
-        #     return CreatePackage(self._app_data)
-        # if cmd_name.upper() == 'CREATEROUTE':
-        #     return CreateRoute(self._app_data)
+        if cmd_name.lower() == 'login':
+            return LoginCommand(self._app_data)
+        if cmd_name.lower() == 'logout':
+            return LogoutCommand(self._app_data)
+        if cmd_name.lower() == 'registeremployee':
+            return RegisterEmployeeCommand(self._app_data)
+        if cmd_name.lower() == 'createpackage':
+            return CreatePackage(self._app_data)
+        if cmd_name.lower() == 'createroute':
+            return CreateRouteCommand(self._app_data)
         
         raise ValueError('Invalid command name')
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)

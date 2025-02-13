@@ -1,5 +1,5 @@
 from models.locations import Locations
-from datetime import timedelta
+from datetime import timedelta,datetime
 
 class Route:
 
@@ -20,15 +20,19 @@ class Route:
         ("Melbourne", "Perth"): 3509,
         ("Brisbane", "Adelaide"): 1927,
         ("Sydney", "Adelaide"): 1376,
-    }
+        ("Sydney", "Alice Springs"): 2762,
+        ("Sydney", "Darwin"): 3935,
+        ("Melbourne", "Alice Springs"): 2255,
+        ("Melbourne", "Darwin"): 3752,
+        ("Adelaide", "Darwin"): 3027,
+        ("Alice Springs", "Perth"): 2481,
+        ("Brisbane", "Perth"): 4311}
 
-    def __init__(self, departure_time, start_loc, *next_loc):
+
+    def __init__(self, departure_time :datetime, start_loc, *next_loc):
         all_locations = [start_loc] + list(next_loc)
-        valid_locations = [loc.value for loc in Locations]
-        invalid = [loc for loc in all_locations if loc not in valid_locations]
-        if invalid:
-            raise ValueError(f"Invalid locations: {', '.join(invalid)}")
-        self.locations = [Locations[loc.upper().replace(" ", "_")] for loc in all_locations]
+        valid_locations = [loc for loc in all_locations if loc in Locations.locations]        
+        self.locations = valid_locations
         self.id = self.id_counter()
         self.departure_time = departure_time
         self.arrival_times = self._calculate_arrival_times()
@@ -43,12 +47,9 @@ class Route:
         current_time = self.departure_time
 
         for i in range(len(self.locations) - 1):
-            start = self.locations[i].value
-            end = self.locations[i + 1].value
+            start = self.locations[i]
+            end = self.locations[i + 1]
             distance = self.DISTANCES.get((start, end)) or self.DISTANCES.get((end, start))
-
-            if distance is None:
-                raise ValueError(f"Distance between {start} and {end} not found.")
 
             travel_hours = distance / self.AVERAGE_SPEED_KMH
             current_time += timedelta(hours=travel_hours)
@@ -62,7 +63,7 @@ class Route:
         for i in range(len(self.locations)):
             loc = self.locations[i]
             time_str = self.arrival_times[i].strftime("%b %d %H:%M")
-            route_str.append(f"{loc.value} ({time_str})")
+            route_str.append(f"{loc} ({time_str})")
         
         return " -> ".join(route_str)
 <<<<<<< HEAD

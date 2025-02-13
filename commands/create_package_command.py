@@ -12,12 +12,17 @@ class CreatePackage(BaseCommand):
 from commands.validate_params import validate_params_count
 =======
 from commands.base_command import BaseCommand
-from core.application_data import ApplicationData
+from core.application_data import Application_data
 
 class CreatePackage(BaseCommand):
+<<<<<<< HEAD
     def __init__(self, app_data: ApplicationData):
         super().__init__(app_data)
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
+=======
+    def __init__(self, app_data: Application_data):
+        self._app_data = app_data
+>>>>>>> 7706c1c (Created CreateRoute)
 
     def execute(self, params):
         super().execute(params)
@@ -53,6 +58,7 @@ class CreatePackage(BaseCommand):
         customer_name, customer_phone, start_loc, end_loc, weight = params
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         package= self._app_data.create_package(customer_name, customer_phone, start_loc, end_loc, weight)
 
 
@@ -75,11 +81,15 @@ from commands.validate_params import validate_params_count
 =======
         package = self._app_data.create_package(
             customer_name, customer_phone, start_loc, end_loc, weight)
+=======
+        package= self._app_data.create_package(customer_name, customer_phone, start_loc, end_loc, weight)
+>>>>>>> 7706c1c (Created CreateRoute)
 
-        return f'Package by {package.customer_name} registered successfully!'
+
+        return f"{package.customer_name}'s package registered successfully!"
 
     def _requires_login(self) -> bool:
-        return False
+        return True
 
     def _expected_params_count(self) -> int:
         return 5

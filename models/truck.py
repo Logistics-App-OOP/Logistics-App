@@ -156,8 +156,19 @@ print(truck1)
         self._available = True
     
     def __str__(self):
+<<<<<<< HEAD
         return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg, Available: {self._available}"
     
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+=======
+=======
+        return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
+    
+>>>>>>> 4c07a03 (Created CreateRoute)
+>>>>>>> 7706c1c (Created CreateRoute)
+>>>>>>> 4b32701 (Created CreateRoute)
