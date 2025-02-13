@@ -45,12 +45,3 @@ class Package:
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
         return weight
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    
-    
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
-=======
-    
->>>>>>> 4c07a03 (Created CreateRoute)

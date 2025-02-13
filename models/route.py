@@ -66,10 +66,3 @@ class Route:
             route_str.append(f"{loc} ({time_str})")
         
         return " -> ".join(route_str)
-<<<<<<< HEAD
-    
-    @staticmethod
-    def is_valid_location(loc):
-        return loc.upper().replace(" ", "_") in Locations.__members__
-=======
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)

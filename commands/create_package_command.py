@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-from commands.validate_params import validate_params_count
-=======
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
 
@@ -23,4 +20,3 @@ class CreatePackage(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 5
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
