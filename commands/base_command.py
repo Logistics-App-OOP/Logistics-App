@@ -1,8 +1,8 @@
-from core.application_data import ApplicationData
+from core.application_data import Application_data
 
 
 class BaseCommand:
-    def __init__(self, app_data: ApplicationData):
+    def __init__(self, app_data: Application_data):
         self._app_data = app_data
 
     def execute(self, params) -> str:
@@ -25,4 +25,4 @@ class BaseCommand:
         if self._app_data.has_logged_in_employee:
             logged_employee = self._app_data.logged_in_employee
             raise ValueError(
-                f'User {logged_employee.username} is logged in! Please log out first!')
+                f'User {logged_employee.username} is already logged in! Please log out first!')

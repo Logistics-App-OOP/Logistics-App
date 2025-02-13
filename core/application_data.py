@@ -142,14 +142,16 @@ from models.truck import Truck
 from models.employee import Employee
 from models.package import Package
 from models.route import Route
+from models.employee import Employee
 
 class Application_data:
     
     def __init__(self):
-        self._employees = []
-        self._packages = []
-        self._routes = []
-        self._trucks = self._adding_trucks()
+        self._employees: list[Employee] = []
+        self._packages: list[Package] = []
+        self._routes: list[Route] = []
+        self._trucks = []
+        self._adding_trucks()
         self._logged_employee = None
             
     @property
@@ -168,7 +170,6 @@ class Application_data:
     def trucks(self):
         return tuple(self._trucks)
     
-
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
         package = Package(customer_name, customer_phone, start_loc, end_loc, weight)
         self._packages.append(package)
@@ -182,7 +183,7 @@ class Application_data:
     def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
         if len([u for u in self._employees if u.username == username]) > 0:
             raise ValueError(
-                f'Employee {username} already exist.')
+                f'Employee username: {username} already exist.')
         employee = Employee(username, firstname, lastname, password, user_role)
         self._employees.append(employee)
         return employee
