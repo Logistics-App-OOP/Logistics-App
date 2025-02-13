@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e6a5d05 (Created truck editted app_data, route,package)
 from core.application_data import Application_data
 
 
@@ -11,6 +14,7 @@ from core.application_data import ApplicationData
 
 class BaseCommand:
     def __init__(self, app_data: ApplicationData):
+<<<<<<< HEAD
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 =======
 from core.application_data import Application_data
@@ -19,6 +23,9 @@ from core.application_data import Application_data
 class BaseCommand:
     def __init__(self, app_data: Application_data):
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+>>>>>>> 68cae1d (Created truck editted app_data, route,package)
+>>>>>>> e6a5d05 (Created truck editted app_data, route,package)
         self._app_data = app_data
 
     def execute(self, params) -> str:
@@ -43,6 +50,7 @@ class BaseCommand:
             raise ValueError(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 f'User {logged_employee.username} is already logged in! Please log out first!')
 =======
                 f'User {logged_employee.username} is logged in! Please log out first!')
@@ -50,3 +58,9 @@ class BaseCommand:
 =======
                 f'User {logged_employee.username} is already logged in! Please log out first!')
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+                f'User {logged_employee.username} is already logged in! Please log out first!')
+=======
+                f'User {logged_employee.username} is logged in! Please log out first!')
+>>>>>>> 68cae1d (Created truck editted app_data, route,package)
+>>>>>>> e6a5d05 (Created truck editted app_data, route,package)

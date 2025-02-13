@@ -22,11 +22,11 @@ class Route:
         ("Sydney", "Adelaide"): 1376,
     }
 
-
     def __init__(self, departure_time, start_loc, *next_loc):
         all_locations = [start_loc] + list(next_loc)
-        if not all(self.is_valid_location(loc) for loc in all_locations):
-            invalid = [loc for loc in all_locations if loc.upper().replace(" ", "_") not in Locations.__members__]
+        valid_locations = [loc.value for loc in Locations]
+        invalid = [loc for loc in all_locations if loc not in valid_locations]
+        if invalid:
             raise ValueError(f"Invalid locations: {', '.join(invalid)}")
         self.locations = [Locations[loc.upper().replace(" ", "_")] for loc in all_locations]
         self.id = self.id_counter()
@@ -37,7 +37,6 @@ class Route:
     def id_counter(cls):
         cls.ID += 1
         return cls.ID
-    
     
     def _calculate_arrival_times(self):
         times = [self.departure_time]
@@ -59,11 +58,14 @@ class Route:
 
     def __str__(self):
         route_str = []
-        for i, loc in enumerate(self.locations):
+    
+        for i in range(len(self.locations)):
+            loc = self.locations[i]
             time_str = self.arrival_times[i].strftime("%b %d %H:%M")
             route_str.append(f"{loc.value} ({time_str})")
-
+        
         return " -> ".join(route_str)
+<<<<<<< HEAD
     
 <<<<<<< HEAD
     
@@ -85,6 +87,7 @@ class Route:
         return loc.upper().replace(" ", "_") in Locations.__members__
 =======
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 =======
         
 
@@ -113,3 +116,5 @@ class Route:
     def is_valid_location(loc):
         return loc.upper().replace(" ", "_") in Locations.__members__
 >>>>>>> 24a6a4e (Updated main based on Emil's branch)
+=======
+>>>>>>> e6a5d05 (Created truck editted app_data, route,package)
