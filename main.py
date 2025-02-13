@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 from core.application_data import Application_data
 from core.command_factory import CommandFactory
 from core.engine import Engine
@@ -31,3 +32,14 @@ engine.start()
 # findroutes Sydney Melbourne
 # findroutes Perth Sydney
 # findpackage 2
+=======
+from core.application_data import ApplicationData
+from core.command_factory import CommandFactory
+from core.engine import Engine
+
+app_data = ApplicationData()
+cmd_factory = CommandFactory(app_data)
+engine = Engine(cmd_factory)
+
+engine.start()
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)

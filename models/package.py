@@ -1,10 +1,7 @@
 from models.locations import Locations
-
-
 class Package:
-
+    
     ID = 1
-
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
         self.customer_name = customer_name
         self.customer_phone = Package.validate_phone(customer_phone)
@@ -12,6 +9,7 @@ class Package:
         self._end_loc = Locations(end_loc)
         self.weight = Package.validate_weight(weight)
         self.id = self.id_counter()
+        self.status = "Created"
     
     @classmethod
     def id_counter(cls):
@@ -25,6 +23,12 @@ class Package:
     @property
     def end_loc(self):
         return self._end_loc
+    
+    def update_status(self):
+        if self.status == "Created":
+            self.status = "In Transit"
+        elif self.status == "In Transit":
+            self.status = "Delivered"
 
     @staticmethod
     def validate_phone(phone):
@@ -41,3 +45,8 @@ class Package:
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
         return weight
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)

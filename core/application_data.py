@@ -2,6 +2,7 @@ from models.truck import Truck
 from models.employee import Employee
 from models.package import Package
 from models.route import Route
+<<<<<<< HEAD
 from models.locations import Locations
 from datetime import datetime
 class Application_data:
@@ -12,6 +13,16 @@ class Application_data:
         self._routes: list[Route] = []
         self._trucks: list[Truck] = []
         self._adding_trucks()
+=======
+
+class Application_data:
+    
+    def __init__(self):
+        self._employees = []
+        self._packages = []
+        self._routes = []
+        self._trucks = self._adding_trucks()
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
         self._logged_employee = None
             
     @property
@@ -30,11 +41,16 @@ class Application_data:
     def trucks(self):
         return tuple(self._trucks)
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
         package = Package(customer_name, customer_phone, start_loc, end_loc, weight)
         self._packages.append(package)
         return package
     
+<<<<<<< HEAD
     def update_package_and_truck_status_when_route_is_finished(self):
         current_time = datetime.now()
         for route in self.routes:
@@ -72,11 +88,26 @@ class Application_data:
         if len([u for u in self._employees if u.username == username]) > 0:
             raise ValueError(
                 f'Employee username: {username} already exist.')
+=======
+    def create_route(self, departure_time, start_loc, *next_loc):
+        route = Route(departure_time, start_loc, *next_loc)
+        self._routes.append(route)
+        return route
+
+    def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
+        if len([u for u in self._employees if u.username == username]) > 0:
+            raise ValueError(
+                f'Employee {username} already exist.')
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
         employee = Employee(username, firstname, lastname, password, user_role)
         self._employees.append(employee)
         return employee
     
+<<<<<<< HEAD
     def find_employee_by_username(self, username: str):
+=======
+    def find_employee_by_username(self, username: str) -> Employee:
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
         filtered = [user for user in self._employees if user.username == username]
         if filtered == []:
             raise ValueError(f'There is no employee with username {username}!')
@@ -97,6 +128,7 @@ class Application_data:
 
     def logout(self):
         self._logged_employee = None
+<<<<<<< HEAD
         
     def check_truck_has_enough_range_and_is_available(self, total_distance):
         suitable_trucks = [truck for truck in self.trucks if truck.available and truck.max_range >= total_distance]
@@ -178,6 +210,8 @@ class Application_data:
         
         return result
     
+=======
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
     
     def _adding_trucks(self):
         for truck_id in range(1001,1011):

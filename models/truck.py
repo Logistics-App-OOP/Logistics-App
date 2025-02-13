@@ -18,6 +18,7 @@ class Truck:
     def capacity(self):
         return self._capacity
     
+<<<<<<< HEAD
     @capacity.setter
     def capacity(self, value):
         if value < 0:
@@ -28,11 +29,21 @@ class Truck:
     def max_range(self):
         return self._max_range
                     
+=======
+    @property
+    def max_range(self):
+        return self._max_range
+    
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
     @property
     def available(self):
         return self._available
     
+<<<<<<< HEAD
     def assign_to_route(self,route):
+=======
+    def change_availability_when_assigned(self):
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
         if not self._available:
             raise ValueError("Truck is already assigned to a route!")
         self._available = False
@@ -41,4 +52,9 @@ class Truck:
         self._available = True
     
     def __str__(self):
+<<<<<<< HEAD
             return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
+=======
+        return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg, Available: {self._available}"
+    
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)

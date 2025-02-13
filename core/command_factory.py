@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 from commands.login_command import LoginCommand
 from commands.logout_command import LogoutCommand
@@ -11,12 +12,20 @@ from commands.view_packages_command import ViewPackages
 from commands.view_routes_command import ViewRoutes
 from commands.view_trucks_command import ViewTrucks
 from commands.find_package_command import FindPackage
+=======
+# from commands.login_command import LoginCommand
+# from commands.logout_command import LogoutCommand
+# from commands.register_employee_command import RegisterEmployeeCommand
+# from commands.create_package import CreatePackage
+# from commands.create_route import CreateRoute
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 
 class CommandFactory:
     def __init__(self, data):
         self._app_data = data
 
     def create(self, cmd_name):
+<<<<<<< HEAD
         if cmd_name.lower() == 'login':
             return LoginCommand(self._app_data)
         if cmd_name.lower() == 'logout':
@@ -42,3 +51,17 @@ class CommandFactory:
         if cmd_name.lower() == 'findpackage':
             return FindPackage(self._app_data)
         raise ValueError('Invalid command name')
+=======
+        # if cmd_name.upper() == 'LOGIN':
+        #     return LoginCommand(self._app_data)
+        # if cmd_name.upper() == 'LOGOUT':
+        #     return LogoutCommand(self._app_data)
+        # if cmd_name.upper() == 'REGISTEREMPLOYEE':
+        #     return RegisterEmployeeCommand(self._app_data)
+        # if cmd_name.upper() == 'CREATEPACKAGE':
+        #     return CreatePackage(self._app_data)
+        # if cmd_name.upper() == 'CREATEROUTE':
+        #     return CreateRoute(self._app_data)
+        
+        raise ValueError('Invalid command name')
+>>>>>>> 9a4c026 (Created truck editted app_data, route,package)
