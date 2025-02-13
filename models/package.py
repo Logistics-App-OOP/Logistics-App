@@ -3,7 +3,7 @@ from models.locations import Locations
 
 class Package:
 
-    ID = 1
+    ID = 0
 
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
         self.customer_name = customer_name

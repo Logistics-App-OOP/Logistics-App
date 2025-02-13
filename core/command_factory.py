@@ -3,6 +3,7 @@ from commands.logout_command import LogoutCommand
 from commands.register_employee_command import RegisterEmployeeCommand
 from commands.create_package import CreatePackage
 from commands.create_route import CreateRoute
+from commands.search_route import SearchRoute
 
 class CommandFactory:
     def __init__(self, data):
@@ -19,5 +20,7 @@ class CommandFactory:
             return CreatePackage(self._app_data)
         if cmd_name.upper() == 'CREATEROUTE':
             return CreateRoute(self._app_data)
+        if cmd_name.upper() == 'SEARCHROUTE':
+            return SearchRoute(self._app_data)
         
         raise ValueError('Invalid command name')

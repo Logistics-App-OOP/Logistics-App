@@ -1,7 +1,7 @@
 from models.employee import Employee
 from models.package import Package
 from models.route import Route
-
+from models.truck_car_park import TruckCarPark
 
 class ApplicationData:
     def __init__(self):
@@ -27,10 +27,27 @@ class ApplicationData:
         self._packages.append(package)
         return package
     
+    # def assign_package_to_truck(self, package_id, truck_id):
+    #     for pack in self._packages:
+    #         if pack.id != package_id:
+    #             raise ValueError(f"Package with ID #{package_id} does not exist.")
+    #     if truck_id not in TruckCarPark.list_all_free_trucks():
+    #         raise ValueError(f'Truck with ID #{truck_id} is not available.')
+    
     def create_route(self, departure_time, start_loc, *next_loc):
         route = Route(departure_time, start_loc, *next_loc)
         self._routes.append(route)
         return route
+    
+    def search_route(self, start_loc, end_loc):
+        final_routes = []
+        routes_contain = [route for route in self._routes if start_loc in route.all_locations and end_loc in route.all_locations]
+        for route in routes_contain:
+            if start_loc != route.all_locations[0]:
+                raise ValueError("Route doesn't exist.")
+            final_routes.append(route)
+        return final_routes
+
 
     def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
         if len([u for u in self._employees if u.username == username]) > 0:

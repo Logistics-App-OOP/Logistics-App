@@ -20,10 +20,10 @@ class CreateRoute(BaseCommand):
 
         route = self._app_data.create_route(departure_time, start_loc, *next_loc)
 
-        return f'Route {str(route)} created successfully!'
+        return f'Route {str(route)} created successfully! Route ID: {route.id}'
 
     def _requires_login(self) -> bool:
         return False
 
     def _expected_params_count(self) -> int:
-        return 2
+        return 3

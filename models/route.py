@@ -3,7 +3,7 @@ from datetime import timedelta
 
 class Route:
 
-    ID = 1
+    ID = 0
     AVERAGE_SPEED_KMH = 87  # km/h
     DISTANCES = {
         ("Sydney", "Melbourne"): 877,
@@ -29,6 +29,7 @@ class Route:
             invalid = [loc for loc in all_locations if loc.upper().replace(" ", "_") not in Locations.__members__]
             raise ValueError(f"Invalid locations: {', '.join(invalid)}")
         self.locations = [Locations[loc.upper().replace(" ", "_")] for loc in all_locations]
+        self.all_locations = all_locations
         self.id = self.id_counter()
         self.departure_time = departure_time
         self.arrival_times = self._calculate_arrival_times()
