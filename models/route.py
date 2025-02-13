@@ -64,8 +64,9 @@ class Route:
         for i, loc in enumerate(self.locations):
             time_str = self.arrival_times[i].strftime("%b %d %H:%M")
             route_str.append(f"{loc.value} ({time_str})")
-
-        return " → ".join(route_str)
+        route_str = " → ".join(route_str)
+        route_str += f" Route ID: #{self.id}"
+        return route_str
     
     @staticmethod
     def is_valid_location(loc):

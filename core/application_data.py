@@ -10,22 +10,21 @@ class ApplicationData:
         self._packages = []
         self._routes = []
         self._logged_employee = None
+        self._trucks = TruckCarPark()
 
     @property
     def employees(self):
         return tuple(self._employees)
     
     def is_manager(self):
-        return (
-        self._logged_employee is not None
-        and self._logged_employee.role == EmployeeRole.MANAGER
-    )
+        if self._logged_employee.role != EmployeeRole.MANAGER:
+            return False
+        return True
     
     def is_supervisor(self):
-        return (
-        self._logged_employee is not None
-        and self._logged_employee.role == EmployeeRole.SUPERVISOR
-    )
+        if self._logged_employee.role != EmployeeRole.SUPERVISOR:
+            return False
+        return True
     
     @property
     def routes(self):
@@ -63,10 +62,13 @@ class ApplicationData:
         final_routes = []
         routes_contain = [route for route in self._routes if start_loc in route.all_locations and end_loc in route.all_locations]
         for route in routes_contain:
-            if start_loc != route.all_locations[0]:
-                raise ValueError("Route doesn't exist.")
-            final_routes.append(route)
+            start_index = route.all_locations.index(start_loc)
+            end_index = route.all_locations.index(end_loc)
+        if start_index >= end_index:
+            raise ValueError("Invalid route: start location appears after end location.")
+        final_routes.append(route)
         return final_routes
+
 
 
     def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
