@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
@@ -123,12 +124,14 @@ class CommandFactory:
 # from commands.create_package import CreatePackage
 # from commands.create_route import CreateRoute
 =======
+=======
+
+>>>>>>> 5657f45 (Rebased from main)
 from commands.login_command import LoginCommand
 from commands.logout_command import LogoutCommand
 from commands.register_employee_command import RegisterEmployeeCommand
 from commands.create_package_command import CreatePackage
 from commands.create_route_command import CreateRouteCommand
->>>>>>> 4c07a03 (Created CreateRoute)
 
 class CommandFactory:
     def __init__(self, data):
@@ -147,5 +150,8 @@ class CommandFactory:
             return CreateRouteCommand(self._app_data)
         
         raise ValueError('Invalid command name')
+<<<<<<< HEAD
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 5657f45 (Rebased from main)

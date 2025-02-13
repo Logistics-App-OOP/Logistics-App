@@ -67,6 +67,7 @@ class Route:
         
         return " -> ".join(route_str)
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 <<<<<<< HEAD
     
@@ -119,3 +120,5 @@ class Route:
 >>>>>>> 24a6a4e (Updated main based on Emil's branch)
 =======
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 5657f45 (Rebased from main)

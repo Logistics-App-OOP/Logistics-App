@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 from models.package import Package
 from models.route import Route
@@ -374,6 +375,8 @@ class Application_data:
     # def logout(self):
     #     self._logged_user = None
 =======
+=======
+>>>>>>> 5657f45 (Rebased from main)
 from models.truck import Truck
 from models.employee import Employee
 from models.package import Package
@@ -457,4 +460,3 @@ class Application_data:
             self._trucks.append(Truck(truck_id,"Actros", 26000, 13000))
         
     
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)

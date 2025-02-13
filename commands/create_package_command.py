@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 55ed752 (Rebased from main)
 from commands.base_command import BaseCommand
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -70,8 +73,11 @@ class CreatePackage(BaseCommand):
     def _expected_params_count(self) -> int:
         return 5
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 =======
+=======
+>>>>>>> 5657f45 (Rebased from main)
 =======
 from commands.validate_params import validate_params_count
 >>>>>>> 6cabb68 (update branch)
@@ -95,4 +101,9 @@ from commands.validate_params import validate_params_count
         return 5
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
 >>>>>>> 68cae1d (Created truck editted app_data, route,package)
+<<<<<<< HEAD
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+=======
+>>>>>>> 55ed752 (Rebased from main)
+>>>>>>> 5657f45 (Rebased from main)

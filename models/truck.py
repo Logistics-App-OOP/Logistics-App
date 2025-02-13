@@ -2,6 +2,7 @@ class Truck:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, truck_id,brand,capacity,max_range):
         self._truck_id = truck_id
         self._brand = brand
@@ -73,6 +74,8 @@ class Truck:
 =======
 =======
 >>>>>>> e6a5d05 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 5657f45 (Rebased from main)
     truck_id = 1
     pass
 =======
@@ -85,36 +88,31 @@ class Truck:
         self._max_range = max_range
         self.available = True
 =======
+=======
+>>>>>>> 55ed752 (Rebased from main)
     def __init__(self, truck_id,brand,capacity,max_range):
         self._truck_id = truck_id
         self._brand = brand
         self._capacity = capacity
         self._max_range = max_range
         self._available = True
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
         
     @property
     def truck_id(self):
         return self._truck_id
     
     @property
-<<<<<<< HEAD
-    def model(self):
-        return self._model
-    
-    @property 
-=======
     def brand(self):
         return self._brand
     
     @property
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
     def capacity(self):
         return self._capacity
     
     @property
     def max_range(self):
         return self._max_range
+<<<<<<< HEAD
     
 <<<<<<< HEAD
     def assign_to_route(self):
@@ -143,6 +141,9 @@ print(truck1)
 =======
 =======
 =======
+=======
+                    
+>>>>>>> 55ed752 (Rebased from main)
     @property
     def available(self):
         return self._available
@@ -156,6 +157,7 @@ print(truck1)
         self._available = True
     
     def __str__(self):
+<<<<<<< HEAD
 <<<<<<< HEAD
         return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg, Available: {self._available}"
     
@@ -171,4 +173,10 @@ print(truck1)
     
 >>>>>>> 4c07a03 (Created CreateRoute)
 >>>>>>> 7706c1c (Created CreateRoute)
+<<<<<<< HEAD
 >>>>>>> 4b32701 (Created CreateRoute)
+=======
+=======
+            return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
+>>>>>>> 55ed752 (Rebased from main)
+>>>>>>> 5657f45 (Rebased from main)

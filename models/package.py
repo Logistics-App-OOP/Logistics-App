@@ -148,6 +148,7 @@ class Package:
     def validate_weight(weight):
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
+<<<<<<< HEAD
         return weight
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -173,4 +174,10 @@ class Package:
     
 >>>>>>> 4c07a03 (Created CreateRoute)
 >>>>>>> 7706c1c (Created CreateRoute)
+<<<<<<< HEAD
 >>>>>>> 4b32701 (Created CreateRoute)
+=======
+=======
+        return weight
+>>>>>>> 55ed752 (Rebased from main)
+>>>>>>> 5657f45 (Rebased from main)
