@@ -1,7 +1,7 @@
 from models.locations import Locations
 class Package:
     
-    ID = 1
+    ID = 0
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
         self.customer_name = customer_name
         self.customer_phone = Package.validate_phone(customer_phone)
@@ -46,7 +46,11 @@ class Package:
             raise ValueError("The weight of a package can't be a negative number.")
         return weight
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
     
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+    
+>>>>>>> 4c07a03 (Created CreateRoute)

@@ -53,8 +53,13 @@ class Truck:
     
     def __str__(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
             return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
 =======
         return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg, Available: {self._available}"
     
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+        return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
+    
+>>>>>>> 4c07a03 (Created CreateRoute)

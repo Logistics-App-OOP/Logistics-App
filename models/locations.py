@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from enum import Enum
 
 class Locations(Enum):
@@ -8,3 +9,8 @@ class Locations(Enum):
     BRISBANE = "Brisbane"
     DARWIN = "Darwin"
     PERTH = "Perth"
+=======
+class Locations:
+    locations = ["Sydney","Melbourne","Adelaide","Alice Springs","Brisbane","Darwin","Perth"]
+ 
+>>>>>>> 4c07a03 (Created CreateRoute)

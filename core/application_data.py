@@ -3,6 +3,7 @@ from models.employee import Employee
 from models.package import Package
 from models.route import Route
 <<<<<<< HEAD
+<<<<<<< HEAD
 from models.locations import Locations
 from datetime import datetime
 class Application_data:
@@ -14,15 +15,26 @@ class Application_data:
         self._trucks: list[Truck] = []
         self._adding_trucks()
 =======
+=======
+from models.employee import Employee
+>>>>>>> 4c07a03 (Created CreateRoute)
 
 class Application_data:
     
     def __init__(self):
+<<<<<<< HEAD
         self._employees = []
         self._packages = []
         self._routes = []
         self._trucks = self._adding_trucks()
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+        self._employees: list[Employee] = []
+        self._packages: list[Package] = []
+        self._routes: list[Route] = []
+        self._trucks = []
+        self._adding_trucks()
+>>>>>>> 4c07a03 (Created CreateRoute)
         self._logged_employee = None
             
     @property
@@ -42,9 +54,12 @@ class Application_data:
         return tuple(self._trucks)
     
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+>>>>>>> 4c07a03 (Created CreateRoute)
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
         package = Package(customer_name, customer_phone, start_loc, end_loc, weight)
         self._packages.append(package)
@@ -97,8 +112,12 @@ class Application_data:
     def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
         if len([u for u in self._employees if u.username == username]) > 0:
             raise ValueError(
+<<<<<<< HEAD
                 f'Employee {username} already exist.')
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)
+=======
+                f'Employee username: {username} already exist.')
+>>>>>>> 4c07a03 (Created CreateRoute)
         employee = Employee(username, firstname, lastname, password, user_role)
         self._employees.append(employee)
         return employee
