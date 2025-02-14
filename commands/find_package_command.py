@@ -1,4 +1,5 @@
 from commands.base_command import BaseCommand
+<<<<<<< HEAD
 from core.application_data import Application_data
 class FindPackage(BaseCommand):
     def __init__(self, app_data: Application_data):
@@ -39,3 +40,7 @@ class FindPackage(BaseCommand):
         
         
         
+=======
+class FindPackage(BaseCommand):
+    pass
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)

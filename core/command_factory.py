@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
 from commands.login_command import LoginCommand
@@ -131,12 +132,20 @@ class CommandFactory:
 =======
 import cmd
 >>>>>>> 9b3c1fa (created find routes and create routes)
+=======
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
 from commands.login_command import LoginCommand
 from commands.logout_command import LogoutCommand
 from commands.register_employee_command import RegisterEmployeeCommand
 from commands.create_package_command import CreatePackage
 from commands.create_route_command import CreateRouteCommand
 from commands.find_routes_command import FindRoutes
+from commands.assign_truck_to_route import AssignTruckToRoute
+from commands.assign_package_to_route_comand import AssignPackageToRoute
+from commands.view_packages_command import ViewPackages
+from commands.view_routes_command import ViewRoutes
+from commands.view_trucks_command import ViewTrucks
+from commands.find_package_command import FindPackage
 
 class CommandFactory:
     def __init__(self, data):
@@ -155,7 +164,18 @@ class CommandFactory:
             return CreateRouteCommand(self._app_data)
         if cmd_name.lower() == 'findroutes':
             return FindRoutes(self._app_data)
-        
+        if cmd_name.lower() == 'assigntrucktoroute':
+            return AssignTruckToRoute(self._app_data)
+        if cmd_name.lower() == 'assignpackagetoroute':
+            return AssignPackageToRoute(self._app_data)
+        if cmd_name.lower() == 'viewpackages':
+            return ViewPackages(self._app_data)
+        if cmd_name.lower() == 'viewroutes':
+            return ViewRoutes(self._app_data)
+        if cmd_name.lower() == 'viewtrucks':
+            return ViewTrucks(self._app_data)
+        if cmd_name.lower() == 'findpackage':
+            return FindPackage(self._app_data)
         raise ValueError('Invalid command name')
 <<<<<<< HEAD
 >>>>>>> 9a4c026 (Created truck editted app_data, route,package)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from models.package import Package
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
@@ -40,3 +41,8 @@ class AssignPackageToRoute(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 2
+=======
+from commands.base_command import BaseCommand
+class AssignPackageToRoute(BaseCommand):
+    pass
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)

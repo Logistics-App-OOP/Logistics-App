@@ -1,4 +1,5 @@
 from commands.base_command import BaseCommand
+<<<<<<< HEAD
 from core.application_data import Application_data
 
 class ViewTrucks(BaseCommand):
@@ -21,3 +22,7 @@ class ViewTrucks(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 0
+=======
+class ViewTrucks(BaseCommand):
+    pass
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)

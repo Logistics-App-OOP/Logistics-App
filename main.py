@@ -18,6 +18,7 @@ engine = Engine(cmd_factory)
 engine.start()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
@@ -60,6 +61,9 @@ engine.start()
 =======
 <<<<<<< HEAD
 >>>>>>> 9b3c1fa (created find routes and create routes)
+=======
+<<<<<<< HEAD
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
 # createroute 2025-02-11T14:30 Sydney Melbourne Perth
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 <<<<<<< HEAD
@@ -92,11 +96,25 @@ engine.start()
 >>>>>>> 4b32701 (Created CreateRoute)
 =======
 =======
+=======
+
+
+# registeremployee Uasim1702 Uasim Halak 123456789 Manager
+# login Uasim1702 123456789
+>>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
 # createroute 2025-02-11T14:30 Sydney Perth 
-# createroute 2025-02-11T14:30 Sydney Melbourne
+# createroute 2025-02-11T14:30 Sydney Melbourne AliceSprings
 # createroute 2025-02-11T14:30 Adelaide Melbourne
 # createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
+<<<<<<< HEAD
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # login Uasim1702 123456789
 >>>>>>> ebba556 (created find routes and create routes)
+<<<<<<< HEAD
 >>>>>>> 9b3c1fa (created find routes and create routes)
+=======
+=======
+# createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
+# assigntrucktoroute 1
+>>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)

@@ -20,6 +20,7 @@ class Locations:
 =======
 >>>>>>> 4b32701 (Created CreateRoute)
 class Locations:
+<<<<<<< HEAD
     locations = ["Sydney","Melbourne","Adelaide","Alice Springs","Brisbane","Darwin","Perth"]
  
 =======
@@ -42,4 +43,11 @@ class Locations:
     locations = ["Sydney","Melbourne","Adelaide","Alice Springs","Brisbane","Darwin","Perth"]
  
 >>>>>>> 7706c1c (Created CreateRoute)
+<<<<<<< HEAD
 >>>>>>> 4b32701 (Created CreateRoute)
+=======
+=======
+    locations = ["Sydney","Melbourne","Adelaide","AliceSprings","Brisbane","Darwin","Perth"]
+ 
+>>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+>>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
