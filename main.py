@@ -101,7 +101,12 @@ engine.start()
 
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # login Uasim1702 123456789
+<<<<<<< HEAD
 >>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+=======
+# createpackage IvanIvanov 0404040404 Sydney Melbourne 45
+# createpackage IvanGeorgiev 0402020202 Sydney Perth 45
+>>>>>>> 5b40157 (Created assign package to route,needs checking for corner case)
 # createroute 2025-02-11T14:30 Sydney Perth 
 # createroute 2025-02-11T14:30 Sydney Melbourne AliceSprings
 # createroute 2025-02-11T14:30 Adelaide Melbourne
@@ -116,5 +121,14 @@ engine.start()
 =======
 # createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
 # assigntrucktoroute 1
+<<<<<<< HEAD
 >>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+<<<<<<< HEAD
 >>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+=======
+=======
+# assigntrucktoroute 2
+# assignpackagetoroute 1 1
+# assignpackagetoroute 1 2
+>>>>>>> 5b40157 (Created assign package to route,needs checking for corner case)
+>>>>>>> dafa830 (Created assign package to route,needs checking for corner case)

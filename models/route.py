@@ -1,10 +1,12 @@
-from tkinter import NO
+
+from models.package import Package
 from models.locations import Locations
 from datetime import timedelta,datetime
+from models.truck import Truck
 
 class Route:
 
-    ID = 0
+    ID = 1
     AVERAGE_SPEED_KMH = 87
     DISTANCES = {
         ("Sydney", "Melbourne"): 877,
@@ -34,10 +36,12 @@ class Route:
         all_locations = [start_loc] + list(next_loc)
         valid_locations = [loc for loc in all_locations if loc in Locations.locations]        
         self.locations = valid_locations
-        self.id = self.id_counter()
+        self.id = Route.ID
+        Route.ID += 1
         self.departure_time = departure_time
         self.arrival_times = self._calculate_arrival_times()
         self.assigned_truck = None
+        self.packages = []
         
     def total_distance(self):
         total_distance = 0
@@ -50,15 +54,13 @@ class Route:
             total_distance += distance
         return total_distance
             
-    def assign_truck(self,truck):
+    def assign_truck(self,truck: Truck):
         if self.assigned_truck:
             raise ValueError(f"Route {self.id} has a truck {self.assigned_truck} already assigned")
-        self.assigned_truck = truck
-
-    @classmethod
-    def id_counter(cls):
-        cls.ID += 1
-        return cls.ID
+        self.assigned_truck:Truck = truck
+    
+    def assign_package(self,package: Package):
+        self.packages.append(package)
     
     def _calculate_arrival_times(self):
         times = [self.departure_time]

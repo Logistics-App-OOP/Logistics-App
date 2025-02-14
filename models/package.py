@@ -107,18 +107,24 @@ class Package:
     ID = 0
 >>>>>>> 7706c1c (Created CreateRoute)
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
+        if start_loc not in Locations.locations:
+            raise ValueError(f"Invalid start location: {start_loc}")
+        self._start_loc = start_loc
+        if end_loc not in Locations.locations:
+            raise ValueError(f"Invalid end location: {end_loc}")
+        self._end_loc = end_loc
         self.customer_name = customer_name
-        self.customer_phone = Package.validate_phone(customer_phone)
-        self._start_loc = Locations(start_loc)
-        self._end_loc = Locations(end_loc)
-        self.weight = Package.validate_weight(weight)
-        self.id = self.id_counter()
+        if not customer_phone.isdigit():
+            raise ValueError("Phone number must contain only digits!")
+        if len(customer_phone) != 10:  
+            raise ValueError("Phone number must be exactly 10 digits long!")
+        self.customer_phone = customer_name
+        if int(weight) <= 0:
+            raise ValueError("The weight of a package can't be a negative number.")
+        self.weight = weight
+        self.id = Package.ID
+        Package.ID += 1
         self.status = "Created"
-    
-    @classmethod
-    def id_counter(cls):
-        cls.ID += 1
-        return cls.ID
     
     @property
     def start_loc(self):
