@@ -1,3 +1,3 @@
 class Locations:
-    locations = ["Sydney","Melbourne","Adelaide","Alice Springs","Brisbane","Darwin","Perth"]
+    locations = ["Sydney","Melbourne","Adelaide","AliceSprings","Brisbane","Darwin","Perth"]
  

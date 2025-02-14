@@ -9,9 +9,13 @@ engine = Engine(cmd_factory)
 
 engine.start()
 
-# createroute 2025-02-11T14:30 Sydney Perth 
-# createroute 2025-02-11T14:30 Sydney Melbourne
-# createroute 2025-02-11T14:30 Adelaide Melbourne
-# createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
+
+
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # login Uasim1702 123456789
+# createroute 2025-02-11T14:30 Sydney Perth 
+# createroute 2025-02-11T14:30 Sydney Melbourne AliceSprings
+# createroute 2025-02-11T14:30 Adelaide Melbourne
+# createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
+# createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
+# assigntrucktoroute 1

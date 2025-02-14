@@ -26,7 +26,7 @@ class Truck:
     def available(self):
         return self._available
     
-    def change_availability_when_assigned(self):
+    def assign_to_route(self,route):
         if not self._available:
             raise ValueError("Truck is already assigned to a route!")
         self._available = False
