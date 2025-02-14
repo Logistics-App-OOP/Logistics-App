@@ -36,6 +36,12 @@ class Application_data:
         self._packages.append(package)
         return package
     
+    def find_package_by_id(self,package_id):
+        for package in self.packages:
+            if package.id == package_id:
+                return package
+        raise ValueError(f"Package with ID: {package_id} does not exist.")
+    
     def create_route(self, departure_time, start_loc, *next_loc):
         all_locations = [start_loc] + list(next_loc)
         invalid_locations = [loc for loc in all_locations if loc not in Locations.locations]

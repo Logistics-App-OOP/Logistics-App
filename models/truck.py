@@ -18,6 +18,12 @@ class Truck:
     def capacity(self):
         return self._capacity
     
+    @capacity.setter
+    def capacity(self, value):
+        if value < 0:
+            raise ValueError("Truck capacity cannot be negative.")
+        self._capacity = value
+    
     @property
     def max_range(self):
         return self._max_range
