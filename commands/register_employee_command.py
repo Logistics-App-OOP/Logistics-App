@@ -1,42 +1,23 @@
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
 
-
-class RegisterEmployeeCommand(BaseCommand):
+class ViewTrucks(BaseCommand):
     def __init__(self, app_data: Application_data):
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        super().__init__(app_data)
->>>>>>> 4c07a03 (Created CreateRoute)
-=======
->>>>>>> ce17e5b (created viewroutes and updated app_data and route)
         self._app_data = app_data
-
+        
     def execute(self, params):
         super().execute(params)
-        self._throw_if_employee_logged_in()
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1cea707 (Working code)
         
-        if len(params) != 5:
-            raise ValueError("Invalid input!Expected: username,first name, last name, password, role.")
+        if len(params) != 0:
+            raise ValueError("Invalid input! No input expected.")
         
-<<<<<<< HEAD
-=======
->>>>>>> 4c07a03 (Created CreateRoute)
-=======
->>>>>>> 1cea707 (Working code)
-        username, firstname, lastname, password, user_role = params
-        user = self._app_data.create_employee(
-            username, firstname, lastname, password, user_role)
-        return f'Employee {user.username} registered successfully!'
-
+        if not self._app_data.logged_in_employee.is_manager():
+            raise ValueError("You are not manager,only Managers can view trucks!")
+        
+        return self._app_data.view_trucks()
+    
     def _requires_login(self) -> bool:
-        return False
+        return True
 
     def _expected_params_count(self) -> int:
-        return 5
-    
+        return 0

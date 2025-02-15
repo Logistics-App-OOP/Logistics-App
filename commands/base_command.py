@@ -1,44 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e6a5d05 (Created truck editted app_data, route,package)
-=======
->>>>>>> 4b32701 (Created CreateRoute)
 from core.application_data import Application_data
 
 
 class BaseCommand:
     def __init__(self, app_data: Application_data):
-=======
-from core.application_data import ApplicationData
-
-
-class BaseCommand:
-    def __init__(self, app_data: ApplicationData):
-<<<<<<< HEAD
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
-=======
-from core.application_data import Application_data
-
-
-class BaseCommand:
-    def __init__(self, app_data: Application_data):
->>>>>>> 4c07a03 (Created CreateRoute)
-=======
->>>>>>> 68cae1d (Created truck editted app_data, route,package)
-<<<<<<< HEAD
->>>>>>> e6a5d05 (Created truck editted app_data, route,package)
-=======
-=======
-from core.application_data import Application_data
-
-
-class BaseCommand:
-    def __init__(self, app_data: Application_data):
->>>>>>> 7706c1c (Created CreateRoute)
->>>>>>> 4b32701 (Created CreateRoute)
         self._app_data = app_data
 
     def execute(self, params) -> str:
@@ -61,28 +25,4 @@ class BaseCommand:
         if self._app_data.has_logged_in_employee:
             logged_employee = self._app_data.logged_in_employee
             raise ValueError(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 f'User {logged_employee.username} is already logged in! Please log out first!')
-=======
-                f'User {logged_employee.username} is logged in! Please log out first!')
->>>>>>> 9a4c026 (Created truck editted app_data, route,package)
-=======
-                f'User {logged_employee.username} is already logged in! Please log out first!')
->>>>>>> 4c07a03 (Created CreateRoute)
-=======
-=======
->>>>>>> 4b32701 (Created CreateRoute)
-                f'User {logged_employee.username} is already logged in! Please log out first!')
-=======
-                f'User {logged_employee.username} is logged in! Please log out first!')
->>>>>>> 68cae1d (Created truck editted app_data, route,package)
-<<<<<<< HEAD
->>>>>>> e6a5d05 (Created truck editted app_data, route,package)
-=======
-=======
-                f'User {logged_employee.username} is already logged in! Please log out first!')
->>>>>>> 7706c1c (Created CreateRoute)
->>>>>>> 4b32701 (Created CreateRoute)

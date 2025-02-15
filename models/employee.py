@@ -19,36 +19,16 @@ class Employee:
     FIRSTNAME_LEN_MAX = 20
     FIRSTNAME_LEN_ERR = f'Firstname must be between {FIRSTNAME_LEN_MIN} and {FIRSTNAME_LEN_MAX} characters long!'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    NOT_SUPERVISOR_ERROR = "Only supervisors are granted access."
-    NOT_MANAGER_ERROR = "Only managers are granted access."
-
-
->>>>>>> b395aa0 (Updated main based on Emil's branch)
-=======
->>>>>>> 7706c1c (Created CreateRoute)
     def __init__(self, username, firstname, lastname, password, role):
         self.username = username
         self.password = password
         self.lastname = lastname
         self.firstname = firstname
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 7706c1c (Created CreateRoute)
         self._role = EmployeeRole.from_string(role)
         
     @property
     def role(self):
         return self._role
-<<<<<<< HEAD
-=======
-        self.role = role
->>>>>>> b395aa0 (Updated main based on Emil's branch)
-=======
->>>>>>> 7706c1c (Created CreateRoute)
     
     @property
     def username(self):
