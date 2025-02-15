@@ -11,7 +11,7 @@ class FindPackage(BaseCommand):
         if len(params) != 1:
             raise ValueError("Invalid input!Expected: Package ID.")
         
-        self._app_data.update_package_status_to_delivered()
+        self._app_data.update_package_and_truck_status_when_route_is_finished()
         
         package_id = int(params[0])
         
