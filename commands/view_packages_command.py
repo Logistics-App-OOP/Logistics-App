@@ -1,5 +1,8 @@
 from commands.base_command import BaseCommand
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 18bdbd2 (created view packages)
 from core.application_data import Application_data
 class ViewPackages(BaseCommand):
     def __init__(self, app_data: Application_data):
@@ -8,11 +11,16 @@ class ViewPackages(BaseCommand):
     def execute(self, params):
         super().execute(params)
         
+<<<<<<< HEAD
         if len(params) != 0:
             raise ValueError("Invalid input! No input expected.")
         
         if not self._app_data.logged_in_employee.is_manager():
             raise ValueError("You are not manager,only Managers can view packages!")
+=======
+        if not self._app_data.logged_in_employee.is_manager():
+            raise ValueError("You are not manager,only Managers can view routes!")
+>>>>>>> 18bdbd2 (created view packages)
         
         return self._app_data.view_unassigned_packages()
     
@@ -21,8 +29,12 @@ class ViewPackages(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 0
+<<<<<<< HEAD
     
 =======
 class ViewPackages(BaseCommand):
     pass
 >>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+=======
+    
+>>>>>>> 18bdbd2 (created view packages)
