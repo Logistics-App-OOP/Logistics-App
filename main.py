@@ -120,6 +120,7 @@ engine.start()
 =======
 =======
 # createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
+# createroute 2025-02-14T23:00 Sydney Melbourne Adelaide Perth
 # assigntrucktoroute 1
 <<<<<<< HEAD
 >>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
@@ -130,5 +131,12 @@ engine.start()
 # assigntrucktoroute 2
 # assignpackagetoroute 1 1
 # assignpackagetoroute 1 2
+<<<<<<< HEAD
 >>>>>>> 5b40157 (Created assign package to route,needs checking for corner case)
+<<<<<<< HEAD
 >>>>>>> dafa830 (Created assign package to route,needs checking for corner case)
+=======
+=======
+# viewroutes
+>>>>>>> 2b2d039 (created viewroutes and updated app_data and route)
+>>>>>>> ce17e5b (created viewroutes and updated app_data and route)

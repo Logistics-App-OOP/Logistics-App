@@ -381,9 +381,8 @@ from models.truck import Truck
 from models.employee import Employee
 from models.package import Package
 from models.route import Route
-from models.employee import Employee
-
 from models.locations import Locations
+from datetime import datetime
 class Application_data:
     
     def __init__(self):
@@ -473,6 +472,34 @@ class Application_data:
             raise ValueError(f"Truck with range {total_distance}km does not exist.")
         return suitable_trucks[0]
     
+    def view_routes_in_progress(self):
+        if not self.routes:
+            return "No routes available!"
+        current_time = datetime.now()
+        
+        result = "\nRoutes in progress:\n"
+        for route in self.routes:
+            if route.departure_time <= current_time < route.arrival_times[-1]:
+                if route.assigned_truck:
+                    truck_info = route.assigned_truck.truck_id
+                else:
+                    truck_info = "No truck assigned to route."
+                if route.packages:
+                    asgn_packages = [f"Package id: {package.id}" for package in route.packages]
+                    weight = sum(int(package.weight) for package in route.packages)
+                else:
+                    asgn_packages = ["No packages assigned"]
+                    weight = 0
+                asgn_packages = [f"ID: {package.id}" for package in route.packages] if route.packages else ["No packages assigned"]
+                result += f"Route {route.id}: {" -> ".join(route.locations)}\n"
+                result += f"Truck: {truck_info}\n"
+                result += f"Assigned packages: {"-".join(asgn_packages)}\n "
+                result += f"Total weight: {weight}\n"
+                result += f"Departure time: {route.departure_time}\n"
+                result += f"Already left stop: {route.current_stop(current_time)}\n"
+                result += f"Next stop {route.next_stop(current_time)}"
+                result += "\n"
+        return result
     def _adding_trucks(self):
         for truck_id in range(1001,1011):
             self._trucks.append(Truck(truck_id,"Scania", 42000,8000))

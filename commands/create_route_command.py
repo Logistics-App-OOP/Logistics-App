@@ -13,9 +13,12 @@ from core.application_data import Application_data
 class CreateRouteCommand(BaseCommand):
     def __init__(self, app_data: Application_data):
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         super().__init__(app_data)
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+>>>>>>> ce17e5b (created viewroutes and updated app_data and route)
         self._app_data = app_data
 
     def execute(self, params):
