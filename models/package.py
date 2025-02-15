@@ -18,6 +18,7 @@ class Package:
         self._status = PackageStatus.RECEIVED
         self._date = datetime.today()
         self._created_time = datetime.now()
+        self._parcels = []
 
     @property
     def date(self):
@@ -52,20 +53,28 @@ class Package:
         self._status = PackageStatus.next(self._status)
 
     def __str__(self):
-        return (f"Package ID:({self.id}), From {self.start_location} to {self.end_location}.\n"
+        return (f"Package ID: {self.id}, From {self.start_location} to {self.end_location}.\n"
                 f"Weight: {self.weight}kg.\n"
                 f"{self._customer_info}\n"
                 f"Received on: {self.time_info}")
 
 
 
+    def total_weight(self):
+        total = 0
+        for parcel in self._parcels:
+            total += parcel.weight
 
+        return total
+
+    @property
+    def parcels(self):
+
+        return self._parcels
 
 
 pak = Package('sydney', 'melbourne', 100, 'Gosho', 'Petrov', '08999999')
 pak1 = Package('sydney', 'melbourne', 100, 'Gosho', 'Sashov', '08999999')
 pak2 = Package('sydney', 'melbourne', 100, 'Gosho', 'Petkov', '08999999')
 
-print(pak)
-print(pak1)
-print(pak2)
+
