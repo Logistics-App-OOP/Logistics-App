@@ -30,11 +30,3 @@ Updating a delivery route – assign a free truck to it.
 Updating a delivery route – assign a delivery package.
 
 View a information about routes, packages and trucks.
-
-Creating a delivery route – should have a unique id, and a list of locations (at least two).
-The first location is the starting location – it has a departure time.
-The other locations have expected arrival time.
-Search for a route based on package’s start and end locations.
-            Updating a delivery route – assign a free truck to it. 
-                Updating a delivery route – assign a delivery package.
-                    View a information about routes, packages and trucks. -->
