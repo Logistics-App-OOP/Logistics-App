@@ -21,8 +21,10 @@ engine.start()
 # createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
 # createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
 # createroute 2025-02-14T23:00 Sydney Melbourne Adelaide Perth
+# createpackage UasiHalak 0876417576 Perth Melbourne 50
 # assigntrucktoroute 1
 # assigntrucktoroute 2
 # assignpackagetoroute 1 1
 # assignpackagetoroute 1 2
 # viewroutes
+# viewpackages

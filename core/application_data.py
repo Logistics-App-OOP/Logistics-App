@@ -97,7 +97,6 @@ class Application_data:
         if not self.routes:
             return "No routes available!"
         current_time = datetime.now()
-        
         result = "\nRoutes in progress:\n"
         for route in self.routes:
             if route.departure_time <= current_time < route.arrival_times[-1]:
@@ -114,13 +113,30 @@ class Application_data:
                 asgn_packages = [f"ID: {package.id}" for package in route.packages] if route.packages else ["No packages assigned"]
                 result += f"Route {route.id}: {" -> ".join(route.locations)}\n"
                 result += f"Truck: {truck_info}\n"
-                result += f"Assigned packages: {"-".join(asgn_packages)}\n "
+                result += f"Assigned packages: {"-".join(asgn_packages)}\n"
                 result += f"Total weight: {weight}\n"
                 result += f"Departure time: {route.departure_time}\n"
                 result += f"Last stop: {route.current_stop(current_time)}\n"
                 result += f"Next stop: {route.next_stop(current_time)}"
                 result += "\n"
         return result
+    
+    def view_unassigned_packages(self):
+        unassigned_packages: list[Package] = []
+        for package in self.packages:
+            for route in self.routes:
+                if package in route.packages:
+                    break
+            else:
+                unassigned_packages.append(package)
+        if not unassigned_packages:
+            return "No unassigned packages"
+        
+        result = "Unassigned packages:\n"
+        for package in unassigned_packages:
+            result += f"Package {package.id} is at Location: {package.start_loc}.\n"
+        return result
+        
     def _adding_trucks(self):
         for truck_id in range(1001,1011):
             self._trucks.append(Truck(truck_id,"Scania", 42000,8000))
