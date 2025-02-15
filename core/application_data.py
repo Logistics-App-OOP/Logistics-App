@@ -68,7 +68,7 @@ class Application_data:
         raise ValueError(f"Route with id {route_id} does not exist.")
     
 
-    def create_employee(self, username, firstname, lastname, password, user_role) -> Employee:
+    def create_employee(self, username, firstname, lastname, password, user_role):
         if len([u for u in self._employees if u.username == username]) > 0:
             raise ValueError(
                 f'Employee username: {username} already exist.')
@@ -76,7 +76,7 @@ class Application_data:
         self._employees.append(employee)
         return employee
     
-    def find_employee_by_username(self, username: str) -> Employee:
+    def find_employee_by_username(self, username: str):
         filtered = [user for user in self._employees if user.username == username]
         if filtered == []:
             raise ValueError(f'There is no employee with username {username}!')
@@ -124,9 +124,9 @@ class Application_data:
                     asgn_packages = ["No packages assigned"]
                     weight = 0
                 asgn_packages = [f"ID: {package.id}" for package in route.packages] if route.packages else ["No packages assigned"]
-                result += f"Route {route.id}: {" -> ".join(route.locations)}\n"
+                result += f"Route {route.id}: {' -> '.join(route.locations)}\n"
                 result += f"Truck: {truck_info}\n"
-                result += f"Assigned packages: {"-".join(asgn_packages)}\n"
+                result += f"Assigned packages: {'-'.join(asgn_packages)}\n"
                 result += f"Total weight: {weight}\n"
                 result += f"Departure time: {route.departure_time}\n"
                 result += f"Last stop: {route.current_stop(current_time)}\n"
