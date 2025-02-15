@@ -1,4 +1,3 @@
-
 from models.package import Package
 from models.locations import Locations
 from datetime import timedelta,datetime
@@ -74,9 +73,20 @@ class Route:
             travel_hours = distance / self.AVERAGE_SPEED_KMH
             current_time += timedelta(hours=travel_hours)
             times.append(current_time)
-
         return times
-
+    
+    def current_stop(self,current_time):
+        for i in range(len(self.arrival_times)):
+            if current_time < self.arrival_times[i]:
+                return self.locations[i-1]
+        return self.locations[-1]
+    
+    def next_stop(self,current_time):
+        for i in range(len(self.arrival_times)):
+            if current_time < self.arrival_times[i]:
+                return self.locations[i]
+        return self.locations[-1]
+    
     def __str__(self):
         route_str = []
     
@@ -86,3 +96,5 @@ class Route:
             route_str.append(f"{loc} ({time_str})")
         
         return f"Route {self.id} -> " + " -> ".join(route_str)
+    
+    

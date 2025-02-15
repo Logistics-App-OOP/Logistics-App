@@ -5,7 +5,6 @@ from core.application_data import Application_data
 
 class CreateRouteCommand(BaseCommand):
     def __init__(self, app_data: Application_data):
-        super().__init__(app_data)
         self._app_data = app_data
 
     def execute(self, params):

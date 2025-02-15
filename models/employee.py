@@ -74,7 +74,6 @@ class Employee:
             raise ValueError(Employee.LASTNAME_LEN_ERR)
         self._lastname = value
     
-    @property
     def is_manager(self):
         if self.role == EmployeeRole.MANAGER:
             return True
