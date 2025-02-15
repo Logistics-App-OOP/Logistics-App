@@ -40,7 +40,7 @@ class Route:
         self.departure_time = departure_time
         self.arrival_times = self._calculate_arrival_times()
         self.assigned_truck = None
-        self.packages = []
+        self.packages: list[Package] = []
         
     def total_distance(self):
         total_distance = 0

@@ -12,11 +12,17 @@ class ViewRoutes(BaseCommand):
         super().execute(params)
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         if len(params) != 0:
             raise ValueError("Invalid input! No input expected.")
         
 =======
 >>>>>>> ce17e5b (created viewroutes and updated app_data and route)
+=======
+        if len(params) != 0:
+            raise ValueError("Invalid input! No input expected.")
+        
+>>>>>>> 1cea707 (Working code)
         if not self._app_data.logged_in_employee.is_manager():
             raise ValueError("You are not manager,only Managers can view routes!")    
         

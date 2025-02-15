@@ -112,6 +112,7 @@ engine.start()
 # createroute 2025-02-11T14:30 Adelaide Melbourne
 # createroute 2025-02-11T14:30 Adelaide Melbourne Sydney
 <<<<<<< HEAD
+<<<<<<< HEAD
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # login Uasim1702 123456789
 >>>>>>> ebba556 (created find routes and create routes)
@@ -120,8 +121,10 @@ engine.start()
 =======
 =======
 # createroute 2025-02-15T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
+=======
+# createroute 2025-02-16T10:00 Sydney Melbourne Perth Adelaide Brisbane Darwin
+>>>>>>> cf80cac (Working code)
 # createroute 2025-02-14T23:00 Sydney Melbourne Adelaide Perth
-# createpackage UasiHalak 0876417576 Perth Melbourne 50
 # assigntrucktoroute 1
 <<<<<<< HEAD
 >>>>>>> dfc19d9 (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
@@ -140,6 +143,7 @@ engine.start()
 =======
 =======
 # viewroutes
+<<<<<<< HEAD
 >>>>>>> 2b2d039 (created viewroutes and updated app_data and route)
 <<<<<<< HEAD
 >>>>>>> ce17e5b (created viewroutes and updated app_data and route)
@@ -148,4 +152,14 @@ engine.start()
 # viewroutes
 # viewpackages
 >>>>>>> 0614eb0 (created view packages)
+<<<<<<< HEAD
 >>>>>>> 18bdbd2 (created view packages)
+=======
+=======
+# viewpackages
+# viewtrucks
+# findroutes Sydney Melbourne
+# findroutes Perth Sydney
+# findpackage 2
+>>>>>>> cf80cac (Working code)
+>>>>>>> 1cea707 (Working code)

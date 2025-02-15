@@ -1,5 +1,8 @@
 from commands.base_command import BaseCommand
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1cea707 (Working code)
 from core.application_data import Application_data
 class FindPackage(BaseCommand):
     def __init__(self, app_data: Application_data):
@@ -12,7 +15,11 @@ class FindPackage(BaseCommand):
         if len(params) != 1:
             raise ValueError("Invalid input!Expected: Package ID.")
         
+<<<<<<< HEAD
         self._app_data.update_package_and_truck_status_when_route_is_finished()
+=======
+        self._app_data.update_package_status_to_delivered()
+>>>>>>> 1cea707 (Working code)
         
         package_id = int(params[0])
         
@@ -39,8 +46,12 @@ class FindPackage(BaseCommand):
         
         
         
+<<<<<<< HEAD
         
 =======
 class FindPackage(BaseCommand):
     pass
 >>>>>>> 3588a2d (Created assigntrucktoroute added all files needed for the project added some commands in appdata and fixed output if invalid city is entered.)
+=======
+        
+>>>>>>> 1cea707 (Working code)

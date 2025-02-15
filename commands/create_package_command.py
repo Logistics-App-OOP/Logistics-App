@@ -32,6 +32,7 @@ class CreatePackage(BaseCommand):
         
         if len(params) != 5:
             raise ValueError("Invalid input!Expected: Customer name, customer phone number, start location, End location, package weight")
+<<<<<<< HEAD
 
         customer_name, customer_phone, start_loc, end_loc, weight = params
 
@@ -57,6 +58,8 @@ class CreatePackage(BaseCommand):
 
     def execute(self, params):
         super().execute(params)
+=======
+>>>>>>> 1cea707 (Working code)
 
         customer_name, customer_phone, start_loc, end_loc, weight = params
 

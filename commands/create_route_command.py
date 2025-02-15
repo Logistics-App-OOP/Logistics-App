@@ -25,10 +25,14 @@ class CreateRouteCommand(BaseCommand):
         super().execute(params)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if len(params) < 3:
 =======
         if len(params) < 2:
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+        if len(params) < 3:
+>>>>>>> 1cea707 (Working code)
             raise ValueError("Invalid input! Expected: departure_time start_location [next_locations...]")
 
         departure_time_str,start_loc,*next_locations = params

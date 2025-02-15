@@ -12,6 +12,7 @@ class ViewPackages(BaseCommand):
         super().execute(params)
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         if len(params) != 0:
             raise ValueError("Invalid input! No input expected.")
         
@@ -21,6 +22,13 @@ class ViewPackages(BaseCommand):
         if not self._app_data.logged_in_employee.is_manager():
             raise ValueError("You are not manager,only Managers can view routes!")
 >>>>>>> 18bdbd2 (created view packages)
+=======
+        if len(params) != 0:
+            raise ValueError("Invalid input! No input expected.")
+        
+        if not self._app_data.logged_in_employee.is_manager():
+            raise ValueError("You are not manager,only Managers can view packages!")
+>>>>>>> 1cea707 (Working code)
         
         return self._app_data.view_unassigned_packages()
     

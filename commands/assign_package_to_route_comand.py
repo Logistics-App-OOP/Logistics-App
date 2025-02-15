@@ -13,6 +13,7 @@ class AssignPackageToRoute(BaseCommand):
         
         if len(params) != 2:
             raise ValueError("Invalid input! Expected input: package id, route id.")
+<<<<<<< HEAD
         
         package_id = int(params[0])
         route_id = int(params[1])
@@ -62,6 +63,8 @@ class AssignPackageToRoute(BaseCommand):
         
         if len(params) != 2:
             raise ValueError("Invalid input! Expected input: route id.")
+=======
+>>>>>>> 1cea707 (Working code)
         
         package_id = int(params[0])
         route_id = int(params[1])

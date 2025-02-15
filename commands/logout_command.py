@@ -9,11 +9,17 @@ class LogoutCommand(BaseCommand):
     def execute(self, params):
         super().execute(params)
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         if len(params) != 0:
             raise ValueError("Invalid input! No input expected.")
 =======
 >>>>>>> 4c07a03 (Created CreateRoute)
+=======
+        
+        if len(params) != 0:
+            raise ValueError("Invalid input! No input expected.")
+>>>>>>> 1cea707 (Working code)
 
         self._app_data.logout()
 
