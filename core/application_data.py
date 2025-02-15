@@ -117,8 +117,8 @@ class Application_data:
                 result += f"Assigned packages: {"-".join(asgn_packages)}\n "
                 result += f"Total weight: {weight}\n"
                 result += f"Departure time: {route.departure_time}\n"
-                result += f"Already left stop: {route.current_stop(current_time)}\n"
-                result += f"Next stop {route.next_stop(current_time)}"
+                result += f"Last stop: {route.current_stop(current_time)}\n"
+                result += f"Next stop: {route.next_stop(current_time)}"
                 result += "\n"
         return result
     def _adding_trucks(self):
