@@ -10,7 +10,7 @@ class AssignPackageToRoute(BaseCommand):
         super().execute(params)
         
         if len(params) != 2:
-            raise ValueError("Invalid input! Expected input: route id.")
+            raise ValueError("Invalid input! Expected input: package id, route id.")
         
         package_id = int(params[0])
         route_id = int(params[1])

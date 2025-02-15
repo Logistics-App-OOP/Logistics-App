@@ -10,7 +10,7 @@ class CreateRouteCommand(BaseCommand):
     def execute(self, params):
         super().execute(params)
 
-        if len(params) < 2:
+        if len(params) < 3:
             raise ValueError("Invalid input! Expected: departure_time start_location [next_locations...]")
 
         departure_time_str,start_loc,*next_locations = params

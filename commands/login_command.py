@@ -9,6 +9,9 @@ class LoginCommand(BaseCommand):
     def execute(self, params):
         super().execute(params)
         self._throw_if_employee_logged_in()
+        
+        if len(params) != 2:
+            raise ValueError("Invalid input!Expected: username, password.")
 
         username, password = params
         user = self._app_data.find_employee_by_username(username)

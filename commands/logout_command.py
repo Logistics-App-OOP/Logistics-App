@@ -8,6 +8,9 @@ class LogoutCommand(BaseCommand):
 
     def execute(self, params):
         super().execute(params)
+        
+        if len(params) != 0:
+            raise ValueError("Invalid input! No input expected.")
 
         self._app_data.logout()
 

@@ -14,7 +14,7 @@ class Package:
             raise ValueError("Phone number must contain only digits!")
         if len(customer_phone) != 10:  
             raise ValueError("Phone number must be exactly 10 digits long!")
-        self.customer_phone = customer_name
+        self.customer_phone = customer_phone
         if int(weight) <= 0:
             raise ValueError("The weight of a package can't be a negative number.")
         self.weight = weight
@@ -33,5 +33,4 @@ class Package:
     def update_status(self):
         if self.status == "Created":
             self.status = "In Transit"
-        elif self.status == "In Transit":
-            self.status = "Delivered"
+    
