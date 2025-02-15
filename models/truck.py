@@ -1,36 +1,44 @@
-from models.locations import Locations
-class Package:
-    
-    ID = 1
-    def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
-        if start_loc not in Locations.locations:
-            raise ValueError(f"Invalid start location: {start_loc}")
-        self._start_loc = start_loc
-        if end_loc not in Locations.locations:
-            raise ValueError(f"Invalid end location: {end_loc}")
-        self._end_loc = end_loc
-        self.customer_name = customer_name
-        if not customer_phone.isdigit():
-            raise ValueError("Phone number must contain only digits!")
-        if len(customer_phone) != 10:  
-            raise ValueError("Phone number must be exactly 10 digits long!")
-        self.customer_phone = customer_phone
-        if int(weight) <= 0:
-            raise ValueError("The weight of a package can't be a negative number.")
-        self.weight = weight
-        self.id = Package.ID
-        Package.ID += 1
-        self.status = "Created"
+class Truck:
+    def __init__(self, truck_id,brand,capacity,max_range):
+        self._truck_id = truck_id
+        self._brand = brand
+        self._capacity = capacity
+        self._max_range = max_range
+        self._available = True
+        
+    @property
+    def truck_id(self):
+        return self._truck_id
     
     @property
-    def start_loc(self):
-        return self._start_loc
+    def brand(self):
+        return self._brand
     
     @property
-    def end_loc(self):
-        return self._end_loc
+    def capacity(self):
+        return self._capacity
     
-    def update_status(self):
-        if self.status == "Created":
-            self.status = "In Transit"
+    @capacity.setter
+    def capacity(self, value):
+        if value < 0:
+            raise ValueError("Truck capacity cannot be negative.")
+        self._capacity = value
     
+    @property
+    def max_range(self):
+        return self._max_range
+                    
+    @property
+    def available(self):
+        return self._available
+    
+    def assign_to_route(self,route):
+        if not self._available:
+            raise ValueError("Truck is already assigned to a route!")
+        self._available = False
+    
+    def release(self):
+        self._available = True
+    
+    def __str__(self):
+            return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
