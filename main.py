@@ -30,3 +30,4 @@ engine.start()
 # findroutes Sydney Melbourne
 # findroutes Perth Sydney
 # findpackage 2
+# findpackage 3
