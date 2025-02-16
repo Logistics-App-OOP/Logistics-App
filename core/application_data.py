@@ -13,7 +13,7 @@ class Application_data:
         self._trucks: list[Truck] = []
         self._adding_trucks()
         self._logged_employee = None
-            
+
     @property
     def employees(self):
         return tuple(self._employees)
@@ -29,29 +29,41 @@ class Application_data:
     @property
     def trucks(self):
         return tuple(self._trucks)
+    @property
+    def logged_in_employee(self):
+        if self.has_logged_in_employee:
+            return self._logged_employee
+        else:
+            raise ValueError('There is no logged in user.')
+
+    @property
+    def has_logged_in_employee(self):
+        return self._logged_employee is not None
+    
+    def _adding_trucks(self):
+        if self.trucks:
+            return
+        for truck_id in range(1001,1011):
+            self._trucks.append(Truck(truck_id,"Scania", 42000,8000))
+            
+        for truck_id in range(1011,1026):
+            self._trucks.append(Truck(truck_id,"Man",37000,10000))
+            
+        for truck_id in range(1026,1041):
+            self._trucks.append(Truck(truck_id,"Actros", 26000, 13000))
+        
     
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
         package = Package(customer_name, customer_phone, start_loc, end_loc, weight)
         self._packages.append(package)
         return package
-    
-    def update_package_and_truck_status_when_route_is_finished(self):
-        current_time = datetime.now()
-        for route in self.routes:
-            if route.arrival_times[-1] <= current_time:
-                for package in route.packages:
-                    if package.status == "In Transit":
-                        package.status = "Delivered"
-                if route.assigned_truck:
-                    route.assigned_truck.release()
-                    route.assigned_truck = None
-                    
+         
     def find_package_by_id(self,package_id):
         for package in self.packages:
             if package.id == package_id:
                 return package
         raise ValueError(f"Package with ID: {package_id} does not exist.")
-    
+                    
     def create_route(self, departure_time, start_loc, *next_loc):
         all_locations = [start_loc] + list(next_loc)
         invalid_locations = [loc for loc in all_locations if loc not in Locations.locations]
@@ -67,6 +79,16 @@ class Application_data:
                 return route
         raise ValueError(f"Route with id {route_id} does not exist.")
     
+    def update_package_and_truck_status_when_route_is_finished(self):
+        current_time = datetime.now()
+        for route in self.routes:
+            if route.arrival_times[-1] <= current_time:
+                for package in route.packages:
+                    if package.status == "In Transit":
+                        package.status = "Delivered"
+                if route.assigned_truck:
+                    route.assigned_truck.release()
+                    route.assigned_truck = None
 
     def create_employee(self, username, firstname, lastname, password, user_role):
         if len([u for u in self._employees if u.username == username]) > 0:
@@ -81,16 +103,6 @@ class Application_data:
         if filtered == []:
             raise ValueError(f'There is no employee with username {username}!')
         return filtered[0]
-    @property
-    def logged_in_employee(self):
-        if self.has_logged_in_employee:
-            return self._logged_employee
-        else:
-            raise ValueError('There is no logged in user.')
-
-    @property
-    def has_logged_in_employee(self):
-        return self._logged_employee is not None
     
     def login(self, employee: Employee):
         self._logged_employee = employee
@@ -104,7 +116,6 @@ class Application_data:
             raise ValueError(f"Truck with range {total_distance}km does not exist.")
         return suitable_trucks[0]
     
-                        
     def view_routes_in_progress(self):
         self.update_package_and_truck_status_when_route_is_finished()
         if not self.routes:
@@ -178,15 +189,4 @@ class Application_data:
         
         return result
     
-    
-    def _adding_trucks(self):
-        for truck_id in range(1001,1011):
-            self._trucks.append(Truck(truck_id,"Scania", 42000,8000))
-            
-        for truck_id in range(1011,1026):
-            self._trucks.append(Truck(truck_id,"Man",37000,10000))
-            
-        for truck_id in range(1026,1041):
-            self._trucks.append(Truck(truck_id,"Actros", 26000, 13000))
-        
     

@@ -29,6 +29,8 @@ class AssignPackageToRoute(BaseCommand):
         if int(route.assigned_truck.capacity) < int(package.weight):
             return f"Package {package_id} cannot be assigned to Route {route_id}.\nTruck {route.assigned_truck.truck_id} dont have enough storage {route.assigned_truck.capacity}kg < {package.weight}kg."
         
+        if package.status != "Created":
+            raise ValueError(f"Error! Package {package.id} already assigned and cannot be assigned twice.")
         route.assign_package(package)
         package.update_status()
         route.assigned_truck.capacity -= int(package.weight)
