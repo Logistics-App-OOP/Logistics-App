@@ -16,9 +16,9 @@ class CreateRouteCommand(BaseCommand):
         departure_time_str,start_loc,*next_locations = params
        
         try:
-            departure_time = datetime.strptime(departure_time_str, "%Y-%m-%dT%H:%M")
+            departure_time = datetime.strptime(departure_time_str, "%Y-%m-%d-%H:%M")
         except ValueError:
-            raise ValueError("Invalid date format! Use YYYY-MM-DDTHH:MM (e.g., 2025-02-11T14:30)")
+            raise ValueError("Invalid date format! Use YYYY-MM-DD-HH:MM (e.g., 2025-02-11-14:30)")
 
         route = self._app_data.create_route(departure_time, start_loc, *next_locations)
         

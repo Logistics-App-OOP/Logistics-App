@@ -40,5 +40,3 @@ class Truck:
     def release(self):
         self._available = True
     
-    def __str__(self):
-            return f"Truck {self._truck_id}: {self._brand}, Capacity: {self._capacity}kg,Max range:{self._max_range} Available: {self._available}"
