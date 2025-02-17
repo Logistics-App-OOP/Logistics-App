@@ -141,7 +141,7 @@ class Application_data:
                 result += f"Total weight: {weight}\n"
                 result += f"Departure time: {route.departure_time}\n"
                 result += f"Last stop: {route.current_stop(current_time)}\n"
-                result += f"Next stop: {route.next_stop(current_time)}"
+                result += f"Next stop: {route.next_stop(current_time)}\n"
                 result += "\n"
         return result
     
@@ -163,7 +163,7 @@ class Application_data:
         
     def view_trucks(self):
         self.update_package_and_truck_status_when_route_is_finished()
-        available_trucks = []
+        has_available_truck = False
         result = "\nTrucks:\n"
         
         for truck in self.trucks:
@@ -173,18 +173,25 @@ class Application_data:
             for route in self.routes:
                 if route.assigned_truck == truck:
                     assigned_route = route
-                    available_time = f"Will be available on {route.arrival_times[-1].strftime('%b %d %H:%M')}\n"
                     break
                 
             result += f"Truck {truck.truck_id}: {truck.brand}, Capacity: {truck.capacity}kg, Max Range: {truck.max_range}km.\n"
             if assigned_route:
-                result += f"Assigned to Route {assigned_route.id} - {available_time}\n"
+                current_time = datetime.now()
+                if assigned_route.departure_time > current_time:
+                    available_time = assigned_route.departure_time.strftime("%Y-%m-%d-%H:%M")
+                    result += f"Assigned to Route {assigned_route.id} - Will be available until {available_time}.\n"
+                    result += "\n"
+                else:
+                    available_time = assigned_route.arrival_times[-1].strftime("%Y-%m-%d-%H:%M")
+                    result += f"Assigned to Route {assigned_route.id} - Will be available after {available_time}.\n"
+                    result += "\n"
             else:
+                has_available_truck = True
                 result += "Available\n"
                 result += "\n"
-                available_trucks.append(truck)
                 
-        if not available_trucks:
+        if not has_available_truck:
             return "No trucks available."
         
         return result
