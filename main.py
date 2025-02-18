@@ -9,8 +9,6 @@ engine.start()
 
 
 
-
-
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # registeremployee JohnDoe John Doe 987654321 Normal
 # registeremployee AliceSmith Alice Smith 456123789 Manager

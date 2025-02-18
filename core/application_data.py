@@ -13,6 +13,39 @@ class Application_data:
         self._trucks: list[Truck] = []
         self._adding_trucks()
         self._logged_employee = None
+        
+    def save_data(self):
+
+        with open("text_files/employees.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["username", "firstname", "lastname", "password", "role"])
+            for emp in self._employees:
+                writer.writerow([emp.username, emp.firstname, emp.lastname, emp.password, emp.role])
+
+        with open("text_files/trucks.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["truck_id", "brand", "capacity", "max_range", "available"])
+            for truck in self._trucks:
+                writer.writerow([truck.truck_id, truck.brand, truck.capacity, truck.max_range, truck.available])
+
+        with open("text_files/packages.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["id", "customer_name", "phone", "start_loc", "end_loc", "weight", "status"])
+            for package in self._packages:
+                writer.writerow([package.id, package.customer_name, package.customer_phone, package.start_loc, package.end_loc, package.weight, package.status])
+
+        with open("text_files/routes.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["id", "locations", "departure_time", "assigned_truck", "packages", "arrival_times"])
+            for route in self._routes:
+                writer.writerow([
+                    route.id,
+                    "|".join(route.locations),
+                    route.departure_time.strftime("%Y-%m-%dT%H:%M"),
+                    route.assigned_truck.truck_id if route.assigned_truck else "",
+                    "|".join(str(p.id) for p in route.packages),
+                    "|".join(time.strftime("%Y-%m-%dT%H:%M") for time in route.arrival_times)
+                ])
 
     @property
     def employees(self):
@@ -113,7 +146,7 @@ class Application_data:
     def check_truck_has_enough_range_and_is_available(self, total_distance):
         suitable_trucks = [truck for truck in self.trucks if truck.available and truck.max_range >= total_distance]
         if not suitable_trucks:
-            raise ValueError(f"Truck with range {total_distance}km does not exist.")
+            raise ValueError(f"Truck with range {total_distance}km does not exist or not available.")
         return suitable_trucks[0]
     
     def view_routes_in_progress(self):
