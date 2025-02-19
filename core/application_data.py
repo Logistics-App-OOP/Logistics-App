@@ -4,6 +4,8 @@ from models.package import Package
 from models.route import Route
 from models.locations import Locations
 from datetime import datetime
+import csv
+
 class Application_data:
     
     def __init__(self):
@@ -13,6 +15,29 @@ class Application_data:
         self._trucks: list[Truck] = []
         self._adding_trucks()
         self._logged_employee = None
+        
+    def save_data(self):
+        with open("text_files/employees.csv","w") as file:
+            writer = csv.writer(file)
+            for emp in self.employees:
+                writer.writerow([emp.username,emp.firstname,emp.lastname,emp.password,emp.role])
+                
+        with open("text_files/trucks.csv","w") as file:
+            writer = csv.writer(file)
+            for truck in self.trucks:
+                writer.writerow([truck.truck_id,truck.brand,truck.capacity,truck,truck.max_range,truck.available])
+                
+        with open("text_files/packages.csv","w") as file:
+            writer = csv.writer(file)
+            for package in self.packages:
+                writer.writerow([package.id,package.customer_name,package.customer_phone,package.start_loc,package.end_loc,package.weight,package.status])
+        
+        with open("text_files/routes.csv", "w") as file:
+            writer = csv.writer(file)
+            for route in self._routes:
+                writer.writerow([route.id,"->".join(route.locations),route.departure_time.strftime("%Y-%m-%d-%H:%M"),
+                                route.assigned_truck.truck_id if route.assigned_truck else "","|".join(str(p.id) for p in route.packages),
+                                "-".join(time.strftime("%Y-%m-%d-%H:%M") for time in route.arrival_times)])
 
     @property
     def employees(self):

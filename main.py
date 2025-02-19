@@ -6,6 +6,7 @@ app_data = Application_data()
 cmd_factory = CommandFactory(app_data)
 engine = Engine(cmd_factory)
 engine.start()
+app_data.save_data()
 
 
 
