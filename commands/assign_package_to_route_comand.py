@@ -5,8 +5,7 @@ from core.application_data import Application_data
 from models.route import Route
 from datetime import datetime
 class AssignPackageToRoute(BaseCommand):
-    def __init__(self, app_data: Application_data):
-        self._app_data = app_data
+
         
     def execute(self, params):
         super().execute(params)
