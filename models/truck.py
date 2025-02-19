@@ -39,4 +39,9 @@ class Truck:
     
     def release(self):
         self._available = True
+        
+    def __str__(self):
+        return f"Truck: {self.truck_id}, Available: {self.available}."
+        
+        
     

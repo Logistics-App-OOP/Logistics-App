@@ -80,4 +80,4 @@ class Employee:
         return False
     
     def __str__(self):
-        return f'Username: {self.username}, FullName: {self.firstname} {self.lastname}, Role: {self.role}'
+        return f'Username: {self.username}, Full Name: {self.firstname} {self.lastname}, Role: {self.role}'

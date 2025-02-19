@@ -113,7 +113,7 @@ class Application_data:
     def check_truck_has_enough_range_and_is_available(self, total_distance):
         suitable_trucks = [truck for truck in self.trucks if truck.available and truck.max_range >= total_distance]
         if not suitable_trucks:
-            raise ValueError(f"Truck with range {total_distance}km does not exist.")
+            raise ValueError(f"Truck with range {total_distance}km does not exist or not available.")
         return suitable_trucks[0]
     
     def view_routes_in_progress(self):

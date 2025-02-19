@@ -17,7 +17,7 @@ class AssignTruckToRoute(BaseCommand):
         route: Route = self._app_data.find_route_by_id(route_id)
         
         if route.assigned_truck:
-            return f"Route {route_id} has already truck:{route.assigned_truck} assigned."
+            return f"Route {route_id} has already truck:{route.assigned_truck.truck_id} assigned."
         
         route_distance = route.total_distance()
         
