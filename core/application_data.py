@@ -79,17 +79,58 @@ class Application_data:
         
     
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
+        """
+        Creates and registers a package for delivery.
+
+    Args:
+        customer_name (str): The name of the customer requesting the package.
+        customer_phone (str): The customer's phone number.
+        start_loc (str): The starting location of the package.
+        end_loc (str): The destination location of the package.
+        weight (int): The package weight in kilograms.
+
+    Returns:
+        Package: An instance of the Package class representing the newly created package.
+        """
         package = Package(customer_name, customer_phone, start_loc, end_loc, weight)
         self._packages.append(package)
         return package
          
     def find_package_by_id(self,package_id):
+        """
+        Finds package by provided ID Number.
+
+    Args:
+        package_id (int): The ID Number of the registered package.
+
+    Returns:
+        Package: An instance of the Package class representing the package, associated with the provided ID.
+
+    Raises:
+        ValueError: If a package, associated with such an ID Number, does not exist.
+
+        """
         for package in self.packages:
             if package.id == package_id:
                 return package
         raise ValueError(f"Package with ID: {package_id} does not exist.")
                     
     def create_route(self, departure_time, start_loc, *next_loc):
+        """
+        Creates and registers a route.
+
+    Args:
+        departure_time (datime): formatted datetime string (e.g., "2025-02-11T14:30").
+        start_loc (str): starting location.
+        *next_loc (str): the next N-locations of the route, including the final destination.
+
+    Returns:
+        Route: An instance of the Route class representing the newly created route.
+
+    Raises:
+        ValueError: If the locations are invalid.
+
+        """
         all_locations = [start_loc] + list(next_loc)
         invalid_locations = [loc for loc in all_locations if loc not in Locations.locations]
         if invalid_locations:
@@ -99,12 +140,30 @@ class Application_data:
         return route
     
     def find_route_by_id(self,route_id):
+        """
+        Looks for a route by ID number.
+
+    Args:
+        route_id (int): designated ID number of a route.
+
+    Returns:
+        route: An instance of the Route class associated with the designated ID number.
+
+    Raises:
+        ValueError: If a route associated with the designated ID does not exist.
+
+        """
         for route in self.routes:
             if route.id == route_id:
                 return route
         raise ValueError(f"Route with id {route_id} does not exist.")
     
     def update_package_and_truck_status_when_route_is_finished(self):
+        """
+        updates the package status from In Transit to Delivered and unassigns truck from route and makes truck 
+        available if the time of the last stop of the route has passed.
+        
+        """
         current_time = datetime.now()
         for route in self.routes:
             if route.arrival_times[-1] <= current_time:
@@ -116,6 +175,23 @@ class Application_data:
                     route.assigned_truck = None
 
     def create_employee(self, username, firstname, lastname, password, user_role):
+        """
+        Creates and registers an employee.
+
+    Args:
+        username (str): username for logging the employee.
+        firstname (str): first name of the employee.
+        lastname (str): last name of the employee.
+        password (str): password for logging the employee.
+        user_role (str): (Optional) if the employee is a manager.
+
+    Returns:
+        Route: An instance of the Employee class representing the newly created employee.
+
+    Raises:
+        ValueError: If an employee with the same username already exists.
+
+        """
         if len([u for u in self._employees if u.username == username]) > 0:
             raise ValueError(
                 f'Employee username: {username} already exist.')
@@ -124,6 +200,19 @@ class Application_data:
         return employee
     
     def find_employee_by_username(self, username: str):
+        """
+        Looks for employee by username.
+
+    Args:
+        username (str): username of the employee.
+
+    Returns:
+        (str): A string containing the employee username.
+
+    Raises:
+        ValueError: If an employee with the username does not exist.
+
+        """
         filtered = [user for user in self._employees if user.username == username]
         if filtered == []:
             raise ValueError(f'There is no employee with username {username}!')
@@ -136,12 +225,34 @@ class Application_data:
         self._logged_employee = None
         
     def check_truck_has_enough_range_and_is_available(self, total_distance):
+        """
+        Finds an available truck that has enough range for the given distance.
+
+    Args:
+        total_distance (float): The required distance the truck must be able to travel.
+
+    Returns:
+        Truck: A suitable truck with sufficient range that is available.
+
+    Raises:
+        ValueError: If no truck is available with the required range.
+        """
         suitable_trucks = [truck for truck in self.trucks if truck.available and truck.max_range >= total_distance]
         if not suitable_trucks:
             raise ValueError(f"Truck with range {total_distance}km does not exist or not available.")
         return suitable_trucks[0]
     
     def view_routes_in_progress(self):
+        """
+        Retrieves a list of active routes currently in progress.
+
+    Checks all routes to determine if their departure time has passed but they have not yet arrived at their final destination.
+    Includes information about the assigned truck, packages, and route status.
+
+    Returns:
+        str: A formatted string listing all active routes with details.
+             If no routes are in progress, returns "No routes currently in progress."
+        """
         self.update_package_and_truck_status_when_route_is_finished()
         if not self.routes:
             return "No routes available!"
@@ -171,6 +282,16 @@ class Application_data:
         return result
     
     def view_unassigned_packages(self):
+        """
+    Retrieves a list of packages that are not assigned to any route.
+
+    Iterates through all packages and checks if they are assigned to a route.
+    If a package is not found in any route, it is considered unassigned.
+
+    Returns:
+        str: A formatted string listing unassigned packages and their locations.
+             Returns "No unassigned packages" if all packages are assigned.
+    """
         unassigned_packages: list[Package] = []
         for package in self.packages:
             for route in self.routes:
@@ -187,6 +308,17 @@ class Application_data:
         return result
         
     def view_trucks(self):
+        """
+    Retrieves the status of all trucks in the system.
+
+    Updates truck and package statuses, then generates a report of all trucks, 
+    showing their assigned routes and availability.
+
+    Returns:
+        str: A formatted string listing each truck, its capacity, range, 
+        and current availability. If no trucks are available, returns 
+        "No trucks available."
+        """
         self.update_package_and_truck_status_when_route_is_finished()
         has_available_truck = False
         result = "\nTrucks:\n"

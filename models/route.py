@@ -4,7 +4,10 @@ from datetime import timedelta,datetime
 from models.truck import Truck
 
 class Route:
-
+    """
+    Represents a route with an ID number, departure time, a starting location, all the next locations, a list of packages assigned to it.
+    Speed and distances inbetween cities are held constant.
+    """
     ID = 1
     AVERAGE_SPEED_KMH = 87
     DISTANCES = {
@@ -32,6 +35,17 @@ class Route:
 
 
     def __init__(self, departure_time :datetime, start_loc, *next_loc):
+        """
+        Initializes an instance of the Route class.
+        
+        Args:
+        departure_time (datetime): A formatted date string (e.g., "2025-02-11T14:30").
+        start_loc (str): The starting location, must be a valid system-supported location.
+        *next_loc (str): Additional locations forming the route, must also be valid locations.
+        
+        Raises:
+        ValueError: If an invalid location is provided.
+        """
         all_locations = [start_loc] + list(next_loc)
         valid_locations = [loc for loc in all_locations if loc in Locations.locations]        
         self.locations = valid_locations
@@ -43,6 +57,10 @@ class Route:
         self.packages: list[Package] = []
         
     def total_distance(self):
+        """
+        Calculates the total distance of the route in kilometers. Sums location A to location B to location C, based on the
+        provided constants.
+        """
         total_distance = 0
         for i in range(len(self.locations)-1):
             start = self.locations[i]
@@ -54,14 +72,38 @@ class Route:
         return total_distance
             
     def assign_truck(self,truck: Truck):
+        """
+        Assigns a truck to a route. Changes self.assigned_truck from None to the designated object of the Class Truck.
+
+        Args: 
+        truck (Truck) - the instance of the class Truck that we're assigning to the route.
+
+        Raises:
+        ValueError: if the route already has a truck assigned to it.
+        """
         if self.assigned_truck:
             raise ValueError(f"Route {self.id} has a truck {self.assigned_truck} already assigned")
         self.assigned_truck:Truck = truck
     
     def assign_package(self,package: Package):
+        """
+        Appends a package to the collection of packages on the route.
+
+        Args:
+        package (Package) - the instance of the class Package that we're appending to self.packages.
+
+        """
         self.packages.append(package)
     
     def _calculate_arrival_times(self):
+        """
+        Calculates the arrival times for each location based on the provided constants for average speed and distances between
+        locations.
+
+        Returns:
+        times (list): list of datetime objects.
+
+        """
         times = [self.departure_time]
         current_time = self.departure_time
 
@@ -76,12 +118,32 @@ class Route:
         return times
     
     def current_stop(self,current_time):
+        """
+        Returns current_stop based on current_time.
+
+        Args:
+        current_time (datetime)
+
+        Returns:
+        str: the name of the current stop.
+
+        """
         for i in range(len(self.arrival_times)):
             if current_time < self.arrival_times[i]:
                 return self.locations[i-1]
         return self.locations[-1]
     
     def next_stop(self,current_time):
+        """
+        Returns next_stop based on current_time.
+
+        Args:
+        current_time (datetime)
+
+        Returns:
+        str: the name of the next stop.
+
+        """
         for i in range(len(self.arrival_times)):
             if current_time < self.arrival_times[i]:
                 return self.locations[i]

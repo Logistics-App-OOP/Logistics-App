@@ -1,6 +1,9 @@
 from models.employee_role import EmployeeRole
 
 class Employee:
+    """
+    Represents an Employee with a username, first name, last name, password, role.
+    """
     USERNAME_LEN_MIN = 2
     USERNAME_LEN_MAX = 20
     USERNAME_LEN_ERR = f'Username must be between {USERNAME_LEN_MIN} and {USERNAME_LEN_MAX} characters long!'
@@ -20,6 +23,23 @@ class Employee:
     FIRSTNAME_LEN_ERR = f'Firstname must be between {FIRSTNAME_LEN_MIN} and {FIRSTNAME_LEN_MAX} characters long!'
 
     def __init__(self, username, firstname, lastname, password, role):
+        """
+        Initializes an instance of the Class Employee.
+
+        Args:
+        username (str)
+        firstname(str)
+        lastname(str)
+        password(str)
+        role(str): only needs to be specified if Manager, otherwise defaults to Normal.
+
+        Raises:
+        ValueError: if invalid username.
+        ValueError: if invalid firstname.
+        ValueError: if invalid lastname.
+        ValueError: if invalid password.
+        ValueError: if invalid role.
+        """
         self.username = username
         self.password = password
         self.lastname = lastname
@@ -75,6 +95,13 @@ class Employee:
         self._lastname = value
     
     def is_manager(self):
+        """
+        Checks employee role.
+
+        Returns:
+        True: if it's manager.
+        False: if it's normal.
+        """
         if self.role == EmployeeRole.MANAGER:
             return True
         return False

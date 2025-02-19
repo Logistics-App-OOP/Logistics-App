@@ -1,8 +1,25 @@
 from models.locations import Locations
 class Package:
-    
+    """
+    Represents a Package with an ID number, customer name, customer phone, starting location, delivery location and total weight.
+    """
     ID = 1
     def __init__(self, customer_name, customer_phone, start_loc, end_loc, weight):
+        """
+        Initializes an instance of the class Package.
+
+        Args:
+        customer_name (str)
+        customer_phone (str)
+        start_loc (str)
+        end_loc (str)
+        weight (int)
+
+        Raises:
+        ValueError: if an invalid location (start_loc, end_loc) is provided.
+        ValueError: if an invalid mobile number (Australian standard) is provided.
+        ValueError: if an invalid package weight (e.g. negative number) is provided.
+        """
         if start_loc not in Locations.locations:
             raise ValueError(f"Invalid start location: {start_loc}")
         self._start_loc = start_loc
