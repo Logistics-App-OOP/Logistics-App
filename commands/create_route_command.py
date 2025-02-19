@@ -3,8 +3,8 @@ from models.route import Route
 from commands.base_command import BaseCommand
 from core.application_data import Application_data
 
-class CreateRouteCommand(BaseCommand):
 
+class CreateRouteCommand(BaseCommand):
 
     def execute(self, params):
         super().execute(params)
@@ -12,17 +12,17 @@ class CreateRouteCommand(BaseCommand):
         if len(params) < 3:
             raise ValueError("Invalid input! Expected: departure_time start_location [next_locations...]")
 
-        departure_time_str,start_loc,*next_locations = params
-       
+        departure_time_str, start_loc, *next_locations = params
+
         try:
             departure_time = datetime.strptime(departure_time_str, "%Y-%m-%d-%H:%M")
         except ValueError:
             raise ValueError("Invalid date format! Use YYYY-MM-DD-HH:MM (e.g., 2025-02-11-14:30)")
 
         route = self._app_data.create_route(departure_time, start_loc, *next_locations)
-        
+
         return str(route)
-    
+
     def _requires_login(self) -> bool:
         return True
 

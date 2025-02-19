@@ -4,10 +4,9 @@ from core.application_data import Application_data
 
 class LogoutCommand(BaseCommand):
 
-
     def execute(self, params):
         super().execute(params)
-        
+
         if len(params) != 0:
             raise ValueError("Invalid input! No input expected.")
 
