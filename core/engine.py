@@ -1,3 +1,4 @@
+from core.application_data import Application_data
 from core.command_factory import CommandFactory
 
 class Engine:
@@ -19,3 +20,7 @@ class Engine:
     def _process_command(self, input_line):
         cmd_name, *params = input_line.split()
         return self._command_factory.create(cmd_name).execute(params)
+    
+    
+    
+    

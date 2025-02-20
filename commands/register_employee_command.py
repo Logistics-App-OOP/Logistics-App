@@ -15,6 +15,7 @@ class RegisterEmployeeCommand(BaseCommand):
         username, firstname, lastname, password, user_role = params
         user = self._app_data.create_employee(
             username, firstname, lastname, password, user_role)
+        self._app_data.save_data()
         return f'Employee {user.username} registered successfully!'
 
     def _requires_login(self) -> bool:

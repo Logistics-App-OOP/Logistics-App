@@ -14,7 +14,7 @@ class CreatePackage(BaseCommand):
         customer_name, customer_phone, start_loc, end_loc, weight = params
 
         package = self._app_data.create_package(customer_name, customer_phone, start_loc, end_loc, weight)
-
+        self._app_data.save_data()
         return f"{package.customer_name}'s package registered successfully with ID: {package.id}!"
 
     def _requires_login(self) -> bool:
