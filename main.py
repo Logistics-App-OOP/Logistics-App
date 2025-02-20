@@ -13,27 +13,31 @@ app_data.save_data()
 # registeremployee Uasim1702 Uasim Halak 123456789 Manager
 # registeremployee JohnDoe John Doe 987654321 Normal
 # registeremployee AliceSmith Alice Smith 456123789 Manager
+# login Uasim1702 123456789
 # login JohnDoe 987654321
 # login AliceSmith 456123789
-# login Uasim1702 123456789
 # createpackage PeterParker 0411223344 Melbourne Brisbane 30
 # createpackage MaryJane 0400112233 Perth Darwin 55
 # createpackage TonyStark 0433221100 Adelaide Sydney 70
 # createpackage SteveRogers 0455667788 Sydney Perth 90
 # createpackage NatashaRomanoff 0499887766 Brisbane AliceSprings 40
+# createpackage SteveRogers 0455667788 Sydney Adelaide 90
+
 # createroute 2025-02-20-09:00 Sydney Melbourne Adelaide
 # createroute 2025-02-21-12:45 Brisbane Perth
 # createroute 2025-02-22-06:30 Darwin AliceSprings Sydney
 # createroute 2025-02-23-15:10 Adelaide Melbourne Sydney Brisbane
-# createroute 2025-02-24-08:00 Perth Melbourne Sydney Brisbane AliceSprings Darwin
+# createroute 2025-02-01-08:00 Perth Melbourne Sydney Brisbane AliceSprings Darwin
 # assigntrucktoroute 3
 # assigntrucktoroute 4
 # assigntrucktoroute 5
+# assigntrucktoroute 1
 # assignpackagetoroute 3 3
 # assignpackagetoroute 4 4
 # assignpackagetoroute 5 5
 # assignpackagetoroute 2 3
 # assignpackagetoroute 1 4
+# assignpackagetoroute 6 1
 # findroutes Melbourne Brisbane
 # findroutes Darwin Sydney
 # findroutes Adelaide Sydney

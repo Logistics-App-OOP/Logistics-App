@@ -30,4 +30,4 @@ class FindPackage(BaseCommand):
         return True
 
     def _expected_params_count(self) -> int:
-        return 0
+        return 1
