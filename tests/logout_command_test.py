@@ -8,7 +8,7 @@ class LogoutCommand_should(unittest.TestCase):
     def setUp(self):
         self.app_data = Application_data()
         self.command = LogoutCommand(self.app_data)
-        self.employee = self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
+        self.employee = self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Manager")
 
     def test_should_logout_successfully(self):
         self.app_data.login(self.employee)
