@@ -36,6 +36,7 @@ class Application_data:
                 for package in route.packages:
                     if package.status == "Created":
                         package.status = "In Transit"
+                        
     def save_data(self):
 
         with open("text_files/employees.csv","w") as file:
@@ -46,7 +47,7 @@ class Application_data:
         with open("text_files/trucks.csv","w") as file:
             writer = csv.writer(file)
             for truck in self.trucks:
-                writer.writerow([truck.truck_id,truck.brand,truck.capacity,truck,truck.max_range,truck.available])
+                writer.writerow([truck.truck_id,truck.brand,truck.capacity,truck.max_range,truck.available])
                 
         with open("text_files/packages.csv","w") as file:
             writer = csv.writer(file)
@@ -58,7 +59,7 @@ class Application_data:
             for route in self._routes:
                 writer.writerow([route.id,"->".join(route.locations),route.departure_time.strftime("%Y-%m-%d-%H:%M"),
                                 route.assigned_truck.truck_id if route.assigned_truck else "","|".join(str(p.id) for p in route.packages),
-                                "-".join(time.strftime("%Y-%m-%d-%H:%M") for time in route.arrival_times)])
+                                " -> ".join(time.strftime("%Y-%m-%d-%H:%M") for time in route.arrival_times)])
 
     @property
     def employees(self):
