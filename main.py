@@ -9,7 +9,7 @@ engine.start()
 app_data.save_data()
 
 
-# registeremployee Uasim1702 Uasim Halak 123456789 Manager
+#registeremployee Uasim1702 Uasim Halak 123456789 Manager  !(We already have it)
 # registeremployee JohnDoe John Doe 987654321 Normal
 # registeremployee AliceSmith Alice Smith 456123789 Manager
 # login Uasim1702 123456789

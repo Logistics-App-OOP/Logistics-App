@@ -1,7 +1,5 @@
 from datetime import datetime
-from models.route import Route
 from commands.base_command import BaseCommand
-
 
 class CreateRouteCommand(BaseCommand):
 
@@ -21,6 +19,7 @@ class CreateRouteCommand(BaseCommand):
         route = self._app_data.create_route(departure_time, start_loc, *next_locations)
 
         return str(route)
+
 
     def _requires_login(self) -> bool:
         return True

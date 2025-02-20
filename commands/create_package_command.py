@@ -7,6 +7,7 @@ class CreatePackage(BaseCommand):
         super().execute(params)
 
         if len(params) != 5:
+            
             raise ValueError(
                 "Invalid input!Expected: Customer name, customer phone number, start location, End location, package weight")
 
