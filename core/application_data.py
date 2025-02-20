@@ -18,7 +18,7 @@ class Application_data:
         
     def update_package_and_truck_status_when_route_is_finished(self):
         """
-        updates the package status from In Transit to Delivered and unassigns truck from route and makes truck 
+        updates the package status from Created to In Transit and from In Transit to Delivered and unassigns truck from route and makes truck 
         available if the time of the last stop of the route has passed.
         
         """

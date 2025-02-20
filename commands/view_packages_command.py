@@ -1,5 +1,4 @@
 from commands.base_command import BaseCommand
-from core.application_data import Application_data
 
 
 class ViewPackages(BaseCommand):

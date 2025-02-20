@@ -1,7 +1,6 @@
 from datetime import datetime
 from models.route import Route
 from commands.base_command import BaseCommand
-from core.application_data import Application_data
 
 
 class CreateRouteCommand(BaseCommand):
