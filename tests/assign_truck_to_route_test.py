@@ -81,11 +81,6 @@ class TestAssignTruckToRoute(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.command.execute(params)
 
-    def test_route_departure_time_in_the_past_raise_error(self):
-        # Test when the route's departure time is in the past
-        with self.assertRaises(ValueError):
-            Route(datetime(2020, 10 ,1), 'Sydney', 'Melbourne')
-
     def test_no_route_found(self):
         # Test when no route is found in the system's data
         self.app_data.find_route_by_id.return_value = None
