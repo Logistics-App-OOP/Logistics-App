@@ -1,78 +1,97 @@
 import unittest
-from models.route import Route
-from models.truck import Truck
+from datetime import datetime, timedelta
+from models.locations import Locations
 from models.package import Package
-from datetime import timedelta
+from models.truck import Truck
+from models.route import Route
 
-VALID_DEPARTURE = "2025-02-21-09:00"
-VALID_START_LOC = "Sydney"
-VALID_NEXT_LOC = "Melbourne Brisbane"
+class TestRoute(unittest.TestCase):
 
-VALID_TRUCK = "Man"
-VALID_ID = 1
-VALID_CAPACITY = 37000
-VALID_MAX_RANGE= 10000
-
-VALID_CUSTOMER_NAME = "Uasim"
-VALID_PHONE = "0404040404"
-VALID_CSTART_LOC = "Sydney"
-VALID_CEND_LOC = "Melbourne"
-VALID_WEIGHT = 45
-
-class Truck_Should(unittest.TestCase):
-
-    def test_route_initialization(self):
-        route = Route(VALID_DEPARTURE, VALID_START_LOC, VALID_NEXT_LOC)
-        self.assertEqual(route.departure_time, VALID_DEPARTURE)
-        self.assertEqual(route.locations[0], VALID_START_LOC)
-        self.assertEqual(route.locations[1], VALID_NEXT_LOC)
-    
-    def test_total_distance(self):
-        route = Route(VALID_DEPARTURE, VALID_START_LOC, VALID_NEXT_LOC)
-        self.assertEqual(route.total_distance, 2642)
-    
-    def test_assign_truck(self):
-        route = Route(VALID_DEPARTURE, VALID_START_LOC, VALID_NEXT_LOC)
-        truck = Truck(VALID_ID, VALID_TRUCK, VALID_CAPACITY, VALID_MAX_RANGE)
-        route.assign_truck(truck)
-        self.assertEqual(route.assigned_truck, truck)
-    
-    def test_assign_package(self):
-        package = Package(VALID_CUSTOMER_NAME, VALID_PHONE, VALID_CSTART_LOC, VALID_CEND_LOC, VALID_WEIGHT)
-        initial_len = len(self.route.packages)
-        self.route.assign_package(package)
-        self.assertEqual(len(self.route.packages), initial_len + 1)
-        self.assertEqual(str(self.route.packages[-1]), package)
-    
-    def test_calculate_arrival_times(self):
-        expected_times = [
-            self.departure_time,
-            self.departure_time + timedelta(hours=1),
-            self.departure_time + timedelta(hours=2)
+    def setUp(self):
+        
+        Locations.locations = [
+            "Sydney", "Melbourne", "Adelaide",
+            "AliceSprings", "Brisbane", "Darwin", "Perth"
         ]
-        self.assertEqual(self.route.arrival_times, expected_times)
-    
-    def test_current_and_next_stop(self):
-        self.assertEqual(self.route.current_stop(self.departure_time), 'A')
-        self.assertEqual(self.route.next_stop(self.departure_time), 'B')
+        
+        Route.ID = 1
+        Package.ID = 1
 
-        time_between_A_B = self.departure_time + timedelta(minutes=30)
-        self.assertEqual(self.route.current_stop(time_between_A_B), 'A')
-        self.assertEqual(self.route.next_stop(time_between_A_B), 'B')
+        self.departure_time = datetime(2025, 2, 20, 8, 0, 0)
 
-        time_between_B_C = self.departure_time + timedelta(hours=1, minutes=30)
-        self.assertEqual(self.route.current_stop(time_between_B_C), 'B')
-        self.assertEqual(self.route.next_stop(time_between_B_C), 'C')
+        self.route = Route(self.departure_time, "Sydney", "Melbourne", "Adelaide")
 
-        time_after_route = self.departure_time + timedelta(hours=3)
-        self.assertEqual(self.route.current_stop(time_after_route), 'C')
-        self.assertEqual(self.route.next_stop(time_after_route), 'C')
-    
-    def test_str_representation(self):
-        expected_time_A = self.departure_time.strftime("%b %d %H:%M")
-        expected_time_B = (self.departure_time + timedelta(hours=1)).strftime("%b %d %H:%M")
-        expected_time_C = (self.departure_time + timedelta(hours=2)).strftime("%b %d %H:%M")
-        expected_str = (
-            f"Route 1 -> A ({expected_time_A}) -> B ({expected_time_B}) -> C ({expected_time_C})"
+    def test_initialization(self):
+        self.assertEqual(self.route.locations, ["Sydney", "Melbourne", "Adelaide"])
+        self.assertEqual(self.route.id, 1)
+        self.assertIsNone(self.route.assigned_truck)
+        self.assertEqual(self.route.packages, [])
+
+    def test_total_distance(self):
+        expected_distance = 877 + 725
+        self.assertEqual(self.route.total_distance(), expected_distance)
+
+    def test_assign_truck(self):
+        truck = Truck(1001,"Scania", 42000,8000)
+        self.route.assign_truck(truck)
+        self.assertEqual(self.route.assigned_truck, truck)
+        with self.assertRaises(ValueError):
+            self.route.assign_truck(truck)
+
+    def test_assign_package(self):
+        package = Package("John Doe", "0412345678", "Sydney", "Adelaide", 100)
+        self.assertEqual(len(self.route.packages), 0)
+        self.route.assign_package(package)
+        self.assertEqual(len(self.route.packages), 1)
+        self.assertEqual(self.route.packages[0], package)
+
+    def test_calculate_arrival_times(self):
+        arrival_times = self.route.arrival_times
+        self.assertEqual(len(arrival_times), len(self.route.locations))
+        self.assertEqual(arrival_times[0], self.departure_time)
+        travel_hours = 877 / Route.AVERAGE_SPEED_KMH
+        expected_melbourne_time = self.departure_time + timedelta(hours=travel_hours)
+        self.assertAlmostEqual(
+            arrival_times[1].timestamp(),
+            expected_melbourne_time.timestamp(),
+            delta=1
         )
+
+    def test_current_stop(self):
+        t0 = self.departure_time
+        t1 = self.route.arrival_times[1]
+        t2 = self.route.arrival_times[2]
+
+        mid_leg1 = t0 + (t1 - t0) / 2
+        self.assertEqual(self.route.current_stop(mid_leg1), "Sydney")
+
+        mid_leg2 = t1 + (t2 - t1) / 2
+        self.assertEqual(self.route.current_stop(mid_leg2), "Melbourne")
+
+        after_route = t2 + timedelta(hours=1)
+        self.assertEqual(self.route.current_stop(after_route), "Adelaide")
+
+    def test_next_stop(self):
+        t0 = self.departure_time
+        t1 = self.route.arrival_times[1]
+        t2 = self.route.arrival_times[2]
+
+        before_route = t0 - timedelta(minutes=5)
+        self.assertEqual(self.route.next_stop(before_route), "Sydney")
+
+        mid_leg1 = t0 + (t1 - t0) / 2
+        self.assertEqual(self.route.next_stop(mid_leg1), "Melbourne")
+
+        mid_leg2 = t1 + (t2 - t1) / 2
+        self.assertEqual(self.route.next_stop(mid_leg2), "Adelaide")
+
+        after_route = t2 + timedelta(hours=1)
+        self.assertEqual(self.route.next_stop(after_route), "Adelaide")
+
+    def test_str(self):
+        parts = []
+        for loc, time in zip(self.route.locations, self.route.arrival_times):
+            time_str = time.strftime("%b %d %H:%M")
+            parts.append(f"{loc} ({time_str})")
+        expected_str = f"Route {self.route.id} -> " + " -> ".join(parts)
         self.assertEqual(str(self.route), expected_str)
