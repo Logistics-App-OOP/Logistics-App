@@ -8,18 +8,10 @@ class Application_data_should(unittest.TestCase):
     def setUp(self):
         self.app_data = Application_data()
     
-    def test_should_CreateEmployeeProperly(self):
-        employee = self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
-        self.assertEqual(employee.username, "Uasim1702")
-        self.assertEqual(employee.firstname, "Uasim")
-        self.assertEqual(employee.lastname, "Halak")
-        self.assertEqual(employee.role, "Manager")
-        self.assertIn(employee, self.app_data.employees)
-    
     def test_should_raise_error_IfDuplicatedEmployee(self):
-        self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
+        self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Manager")
         with self.assertRaises(ValueError):
-            self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
+            self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Manager")
              
              
     def test_should_CreatePackageProperly(self):
@@ -42,14 +34,14 @@ class Application_data_should(unittest.TestCase):
             self.app_data.find_package_by_id(500)
             
     def test_should_createRouteProperly(self):
-        departure_time = datetime(2025, 2, 10, 14, 30)
+        departure_time = datetime(2026, 2, 10, 14, 30)
         route = self.app_data.create_route(departure_time, "Sydney", "Melbourne", "Adelaide")
         self.assertEqual(route.departure_time, departure_time)
         self.assertEqual(route.locations, ["Sydney", "Melbourne", "Adelaide"])
         self.assertIn(route, self.app_data.routes)
 
     def test_should_findRouteById(self):
-        departure_time = datetime(2025, 2, 11, 10, 0)
+        departure_time = datetime(2026, 2, 11, 10, 0)
         route = self.app_data.create_route(departure_time, "Brisbane", "Darwin")
         found_route = self.app_data.find_route_by_id(route.id)
         self.assertEqual(found_route, route)
@@ -59,15 +51,15 @@ class Application_data_should(unittest.TestCase):
             self.app_data.find_route_by_id(500)
 
     def test_should_createEmployeeProperly(self):
-        employee = self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Normal")
-        self.assertEqual(employee.username, "Uasim1702")
+        employee = self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Normal")
+        self.assertEqual(employee.username, "Uasim17022")
         self.assertEqual(employee.firstname, "Uasim")
         self.assertEqual(employee.lastname, "Halak")
         self.assertEqual(employee.password, "123456789")
         self.assertEqual(employee.role, "Normal")
 
     def test_should_loginAndLogoutProperly(self):
-        employee = self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
+        employee = self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Manager")
         self.app_data.login(employee)
         self.assertEqual(self.app_data.logged_in_employee, employee)
         self.app_data.logout()

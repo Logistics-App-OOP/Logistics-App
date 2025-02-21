@@ -9,8 +9,7 @@ engine.start()
 app_data.save_data()
 
 
-
-# registeremployee Uasim1702 Uasim Halak 123456789 Manager
+#registeremployee Uasim1702 Uasim Halak 123456789 Manager  !(We already have it)
 # registeremployee JohnDoe John Doe 987654321 Normal
 # registeremployee AliceSmith Alice Smith 456123789 Manager
 # login Uasim1702 123456789
@@ -26,7 +25,7 @@ app_data.save_data()
 # createroute 2025-02-21-12:45 Brisbane Perth
 # createroute 2025-02-22-06:30 Darwin AliceSprings Sydney
 # createroute 2025-02-23-15:10 Adelaide Melbourne Sydney Brisbane
-# createroute 2025-02-01-08:00 Perth Melbourne Sydney Brisbane AliceSprings Darwin
+# createroute 2025-02-19-08:00 Perth Melbourne Sydney Brisbane AliceSprings Darwin
 # assigntrucktoroute 3
 # assigntrucktoroute 4
 # assigntrucktoroute 5

@@ -1,7 +1,5 @@
 from datetime import datetime
-from models.route import Route
 from commands.base_command import BaseCommand
-
 
 class CreateRouteCommand(BaseCommand):
 
@@ -19,8 +17,9 @@ class CreateRouteCommand(BaseCommand):
             raise ValueError("Invalid date format! Use YYYY-MM-DD-HH:MM (e.g., 2025-02-11-14:30)")
 
         route = self._app_data.create_route(departure_time, start_loc, *next_locations)
-
+        self._app_data.save_data()
         return str(route)
+
 
     def _requires_login(self) -> bool:
         return True

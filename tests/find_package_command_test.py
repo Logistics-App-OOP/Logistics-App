@@ -7,7 +7,7 @@ class FindPackage_should(unittest.TestCase):
     def setUp(self):
         self.app_data = Application_data()
         self.command = FindPackage(self.app_data)
-        self.employee = self.app_data.create_employee("Uasim1702", "Uasim", "Halak", "123456789", "Manager")
+        self.employee = self.app_data.create_employee("Uasim17022", "Uasim", "Halak", "123456789", "Manager")
         self.app_data.login(self.employee)
         self.test_package = self.app_data.create_package("Uasim", "0404040404", "Sydney", "Melbourne", 45)
 

@@ -9,7 +9,10 @@ import csv
 class Application_data:
     
     def __init__(self):
-        self._employees: list[Employee] = []
+        self._employees: list[Employee] = [Employee("Uasim1702","Uasim","Halak","123456789", "Manager"),
+                                            Employee("Lyubo123","Lyubo","Familiq","987654321", "Manager"),
+                                            Employee("Emo123","Emil","Familiq","123454321", "Manager")
+                                            ]
         self._packages: list[Package] = []
         self._routes: list[Route] = []
         self._trucks: list[Truck] = []

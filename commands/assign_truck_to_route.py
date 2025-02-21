@@ -26,6 +26,7 @@ class AssignTruckToRoute(BaseCommand):
 
         route.assign_truck(truck)
         truck.assign_to_route(route)
+        self._app_data.save_data()
         return f"Truck {truck.truck_id} assigned to Route {route_id} with total distance {route_distance}km."
 
     def _requires_login(self) -> bool:
