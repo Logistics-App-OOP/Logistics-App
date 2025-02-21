@@ -1,5 +1,4 @@
 from commands.base_command import BaseCommand
-from core.application_data import Application_data
 
 
 class FindPackage(BaseCommand):
@@ -30,4 +29,4 @@ class FindPackage(BaseCommand):
         return True
 
     def _expected_params_count(self) -> int:
-        return 0
+        return 1

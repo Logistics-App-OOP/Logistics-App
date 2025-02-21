@@ -51,6 +51,8 @@ class Route:
         self.locations = valid_locations
         self.id = Route.ID
         Route.ID += 1
+        if departure_time < datetime.now():
+            raise ValueError("Cannot create routes with departure time in the past.")
         self.departure_time = departure_time
         self.arrival_times = self._calculate_arrival_times()
         self.assigned_truck = None

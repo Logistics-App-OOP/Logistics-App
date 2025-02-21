@@ -1,6 +1,5 @@
 from models.package import Package
 from commands.base_command import BaseCommand
-from core.application_data import Application_data
 from models.route import Route
 from datetime import datetime
 
@@ -35,7 +34,7 @@ class AssignPackageToRoute(BaseCommand):
             raise ValueError(f"Error! Package {package.id} already assigned and cannot be assigned twice.")
         route.assign_package(package)
         if not route.departure_time > current_time:
-            package.update_status()
+            package.update_status()  ##### not needed anymore
         route.assigned_truck.capacity -= int(package.weight)
 
         return f"Package {package_id} assigned to Route {route_id}.\nRemaining truck capacity {route.assigned_truck.capacity}kg."

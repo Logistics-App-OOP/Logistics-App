@@ -16,7 +16,29 @@ class Application_data:
         self._adding_trucks()
         self._logged_employee = None
         
+    def update_package_and_truck_status_when_route_is_finished(self):
+        """
+        updates the package status from Created to In Transit and from In Transit to Delivered and unassigns truck from route and makes truck 
+        available if the time of the last stop of the route has passed.
+        
+        """
+        current_time = datetime.now()
+        for route in self.routes:
+            if route.arrival_times[-1] <= current_time:
+                for package in route.packages:
+                    if package.status == "In Transit":
+                        package.status = "Delivered"
+                if route.assigned_truck:
+                    route.assigned_truck.release()
+                    route.assigned_truck = None
+                    
+            elif route.departure_time <= current_time:
+                for package in route.packages:
+                    if package.status == "Created":
+                        package.status = "In Transit"
+                        
     def save_data(self):
+
         with open("text_files/employees.csv","w") as file:
             writer = csv.writer(file)
             for emp in self.employees:
@@ -25,7 +47,7 @@ class Application_data:
         with open("text_files/trucks.csv","w") as file:
             writer = csv.writer(file)
             for truck in self.trucks:
-                writer.writerow([truck.truck_id,truck.brand,truck.capacity,truck,truck.max_range,truck.available])
+                writer.writerow([truck.truck_id,truck.brand,truck.capacity,truck.max_range,truck.available])
                 
         with open("text_files/packages.csv","w") as file:
             writer = csv.writer(file)
@@ -37,7 +59,7 @@ class Application_data:
             for route in self._routes:
                 writer.writerow([route.id,"->".join(route.locations),route.departure_time.strftime("%Y-%m-%d-%H:%M"),
                                 route.assigned_truck.truck_id if route.assigned_truck else "","|".join(str(p.id) for p in route.packages),
-                                "-".join(time.strftime("%Y-%m-%d-%H:%M") for time in route.arrival_times)])
+                                " -> ".join(time.strftime("%Y-%m-%d-%H:%M") for time in route.arrival_times)])
 
     @property
     def employees(self):
@@ -158,21 +180,6 @@ class Application_data:
                 return route
         raise ValueError(f"Route with id {route_id} does not exist.")
     
-    def update_package_and_truck_status_when_route_is_finished(self):
-        """
-        updates the package status from In Transit to Delivered and unassigns truck from route and makes truck 
-        available if the time of the last stop of the route has passed.
-        
-        """
-        current_time = datetime.now()
-        for route in self.routes:
-            if route.arrival_times[-1] <= current_time:
-                for package in route.packages:
-                    if package.status == "In Transit":
-                        package.status = "Delivered"
-                if route.assigned_truck:
-                    route.assigned_truck.release()
-                    route.assigned_truck = None
 
     def create_employee(self, username, firstname, lastname, password, user_role):
         """
