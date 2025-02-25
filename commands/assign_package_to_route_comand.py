@@ -33,8 +33,6 @@ class AssignPackageToRoute(BaseCommand):
         if package.status != "Created":
             raise ValueError(f"Error! Package {package.id} already assigned and cannot be assigned twice.")
         route.assign_package(package)
-        if not route.departure_time > current_time:
-            package.update_status()  ##### not needed anymore
         route.assigned_truck.capacity -= int(package.weight)
         self._app_data.save_data()
         return f"Package {package_id} assigned to Route {route_id}.\nRemaining truck capacity {route.assigned_truck.capacity}kg."

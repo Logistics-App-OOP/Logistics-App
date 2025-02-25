@@ -32,6 +32,10 @@ class Application_data:
                     if package.status == "In Transit":
                         package.status = "Delivered"
                 if route.assigned_truck:
+                    for truck in self.trucks:
+                        if truck.truck_id == route.assigned_truck.truck_id:
+                            route.assigned_truck.capacity = truck.capacity
+                            break
                     route.assigned_truck.release()
                     route.assigned_truck = None
                     
@@ -264,12 +268,12 @@ class Application_data:
              If no routes are in progress, returns "No routes currently in progress."
         """
         self.update_package_and_truck_status_when_route_is_finished()
-        if not self.routes:
-            return "No routes available!"
         current_time = datetime.now()
         result = "\nRoutes in progress:\n"
+        found_active = False
         for route in self.routes:
             if route.departure_time <= current_time < route.arrival_times[-1]:
+                found_active = True
                 if route.assigned_truck:
                     truck_info = route.assigned_truck.truck_id
                 else:
@@ -289,6 +293,9 @@ class Application_data:
                 result += f"Last stop: {route.current_stop(current_time)}\n"
                 result += f"Next stop: {route.next_stop(current_time)}\n"
                 result += "\n"
+                
+        if not found_active:
+            return "No routes available!"
         return result
     
     def view_unassigned_packages(self):
