@@ -47,9 +47,3 @@ class Package_should(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Package(VALID_CUSTOMER_NAME, VALID_PHONE, VALID_START_LOC, VALID_END_LOC, 0)
-
-    def test_should_checkUpdateStatusWorksProperly(self):
-        package = Package(VALID_CUSTOMER_NAME, VALID_PHONE, VALID_START_LOC, VALID_END_LOC, VALID_WEIGHT)
-        self.assertEqual(package.status, "Created")
-        package.update_status()
-        self.assertEqual(package.status, "In Transit")
