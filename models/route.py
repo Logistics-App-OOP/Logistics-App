@@ -157,6 +157,6 @@ class Route:
             time_str = self.arrival_times[i].strftime("%b %d %H:%M")
             route_str.append(f"{loc} ({time_str})")
         
-        return f"Route {self.id} -> " + " -> ".join(route_str)
+        return f"Route {self.id} -> {' -> '.join(route_str)}"
     
     

@@ -46,8 +46,5 @@ class Package:
     @property
     def end_loc(self):
         return self._end_loc
-    
-    def update_status(self):
-        if self.status == "Created":
-            self.status = "In Transit"
+ 
     

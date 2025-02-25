@@ -23,7 +23,6 @@ class Application_data:
         """
         updates the package status from Created to In Transit and from In Transit to Delivered and unassigns truck from route and makes truck 
         available if the time of the last stop of the route has passed.
-        
         """
         current_time = datetime.now()
         for route in self.routes:
@@ -106,7 +105,6 @@ class Application_data:
         for truck_id in range(1026,1041):
             self._trucks.append(Truck(truck_id,"Actros", 26000, 13000))
         
-    
     def create_package(self, customer_name, customer_phone, start_loc, end_loc, weight):
         """
         Creates and registers a package for delivery.
@@ -270,21 +268,20 @@ class Application_data:
         self.update_package_and_truck_status_when_route_is_finished()
         current_time = datetime.now()
         result = "\nRoutes in progress:\n"
-        found_active = False
+        found_in_progress = False
         for route in self.routes:
             if route.departure_time <= current_time < route.arrival_times[-1]:
-                found_active = True
+                found_in_progress = True
                 if route.assigned_truck:
                     truck_info = route.assigned_truck.truck_id
                 else:
                     truck_info = "No truck assigned to route."
                 if route.packages:
-                    asgn_packages = [f"Package id: {package.id} {package.status}" for package in route.packages]
+                    asgn_packages = " - ".join(f"ID: {package.id} {package.status}" for package in route.packages)
                     weight = sum(int(package.weight) for package in route.packages)
                 else:
-                    asgn_packages = ["No packages assigned"]
+                    asgn_packages = "No packages assigned"
                     weight = 0
-                asgn_packages = [f"ID: {package.id}" for package in route.packages] if route.packages else ["No packages assigned"]
                 result += f"Route {route.id}: {' -> '.join(route.locations)}\n"
                 result += f"Truck: {truck_info}\n"
                 result += f"Assigned packages: {'-'.join(asgn_packages)}\n"
@@ -294,8 +291,8 @@ class Application_data:
                 result += f"Next stop: {route.next_stop(current_time)}\n"
                 result += "\n"
                 
-        if not found_active:
-            return "No routes available!"
+        if not found_in_progress:
+            return "No routes in progress!"
         return result
     
     def view_unassigned_packages(self):
@@ -342,29 +339,24 @@ class Application_data:
         
         for truck in self.trucks:
             assigned_route = None
-            available_time = "Available"
-            available_time += "\n"
+            available_time = "Available\n"
             for route in self.routes:
                 if route.assigned_truck == truck:
                     assigned_route = route
                     break
                 
-            result += f"Truck {truck.truck_id}: {truck.brand}, Capacity: {truck.capacity}kg, Max Range: {truck.max_range}km.\n"
+            result += f"\nTruck {truck.truck_id}: {truck.brand}, Capacity: {truck.capacity}kg, Max Range: {truck.max_range}km.\n"
             if assigned_route:
                 current_time = datetime.now()
                 if assigned_route.departure_time > current_time:
                     available_time = assigned_route.departure_time.strftime("%Y-%m-%d-%H:%M")
                     result += f"Assigned to Route {assigned_route.id} - Will be available until {available_time}.\n"
-                    result += "\n"
                 else:
                     available_time = assigned_route.arrival_times[-1].strftime("%Y-%m-%d-%H:%M")
                     result += f"Assigned to Route {assigned_route.id} - Will be available after {available_time}.\n"
-                    result += "\n"
             else:
                 has_available_truck = True
-                result += "Available\n"
-                result += "\n"
-                
+                result += "Available\n"       
         if not has_available_truck:
             return "No trucks available."
         

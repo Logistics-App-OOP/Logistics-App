@@ -1,7 +1,6 @@
 from models.package import Package
 from commands.base_command import BaseCommand
 from models.route import Route
-from datetime import datetime
 
 
 class AssignPackageToRoute(BaseCommand):
@@ -12,7 +11,6 @@ class AssignPackageToRoute(BaseCommand):
         if len(params) != 2:
             raise ValueError("Invalid input! Expected input: package id, route id.")
 
-        current_time = datetime.now()
         package_id = int(params[0])
         route_id = int(params[1])
 
@@ -30,8 +28,9 @@ class AssignPackageToRoute(BaseCommand):
         if int(route.assigned_truck.capacity) < int(package.weight):
             return f"Package {package_id} cannot be assigned to Route {route_id}.\nTruck {route.assigned_truck.truck_id} dont have enough storage {route.assigned_truck.capacity}kg < {package.weight}kg."
 
-        if package.status != "Created":
-            raise ValueError(f"Error! Package {package.id} already assigned and cannot be assigned twice.")
+        for existing_route in self._app_data.routes:
+                if package in existing_route.packages:
+                    raise ValueError(f"Error! Package {package.id} is already assigned to Route {existing_route.id} and cannot be reassigned.")
         route.assign_package(package)
         route.assigned_truck.capacity -= int(package.weight)
         self._app_data.save_data()
