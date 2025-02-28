@@ -1,16 +1,20 @@
+---Logistics Application---
 Project Description
 Design and implement a Logistics console application.
 The application will be used by employees of a large Australian company aiming to expand its activities to the freight industry. The app will be used to manage the delivery of packages between hubs in major Australian cities. An employee of the company must be able to record the details of a delivery package, create or search for suitable delivery routes, and inspect the current state of delivery packages, transport vehicles and delivery routes. 
-Functional Requirements
-The application must support the following operations:
-Creating a delivery package – unique id, start location, end location and weight in kg, and contact information for the customer.
-Creating a delivery route – should have a unique id, and a list of locations (at least two).
-The first location is the starting location – it has a departure time.
-The other locations have expected arrival time.
-Search for a route based on package’s start and end locations.
-Updating a delivery route – assign a free truck to it. 
-Updating a delivery route – assign a delivery package.
-View a information about routes, packages and trucks.
+FUNCTIONALITY:
+Create & Manage Packages – Register packages and assign them to routes.
+Truck Management – Assign trucks to routes based on availability.
+Employee Management – Handles employee roles and login/logout functionality.
+Route Tracking – Find routes and view assigned packages.
+Command-Based System – Uses a structured command approach for execution.
+Unit Testing Support – Includes automated tests for validation.
+Save CSV - Saving the progrma state after every command to a CSV file.
 
-The application should support the following operations:
-Save the application state to the file system
+Usage:
+The program can be started from the main.py
+
+Contributors: 
+@uasim1702
+@lyuboparvanovv
+@eimihaylov
